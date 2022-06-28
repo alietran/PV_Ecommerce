@@ -1,0 +1,175 @@
+.header {
+  &__banner {
+    &-img {
+      width: 100%;
+      cursor: pointer;
+      height: 56px;
+      z-index: 0;
+      object-fit: cover;
+    }
+  }
+  &__help {
+    background-color: rgb(20, 53, 195);
+    height: 42px;
+    &-content {
+      display: flex;
+      .header__help-item {
+        text-decoration: none;
+        color: unset;
+        cursor: pointer;
+        .header__help-btn {
+          padding: 0rem 1.25rem;
+          background-color: transparent;
+          display: flex;
+          -webkit-box-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          align-items: center;
+          outline: none;
+          border: none;
+          height: 42px;
+          .header__help-title {
+            background-color: transparent;
+            color: #ffffff;
+            font-weight: 400;
+            text-decoration: unset;
+            font-size: 13px;
+            line-height: 20px;
+            overflow: hidden;
+            margin-left: 7px;
+          }
+        }
+      }
+    }
+  }
+  &__navigationBar {
+    height: 88px;
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0px;
+    z-index: 1040;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
+    // height: 88px;
+    min-width: 68px;
+    &-content {
+      row-gap: 16px;
+      height: 88px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-box-align: center;
+      .header__navigationBar-wrapper {
+        .header__navigationBar-logo {
+          a img {
+            height: 35px;
+            width: auto;
+            transition: all 0.15s ease-in-out 0s;
+          }
+        }
+        .header__navigationBar-search {
+          display: flex;
+          background-color: rgb(245, 245, 245);
+          padding: 1px;
+          border-radius: 8px;
+          border: 1px solid rgb(234, 234, 234);
+          input {
+            display: block;
+            width: 100%;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            min-height: 16px;
+            border: 0px;
+            background-color: transparent;
+            flex: 1 1 0%;
+          }
+          button {
+            overflow: hidden;
+            line-height: 1rem;
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(20, 53, 195);
+            color: rgb(255, 255, 255);
+            user-select: none;
+            text-decoration: none;
+            flex-direction: row;
+            position: relative;
+            height: 38px;
+            width: 38px;
+            border-radius: 8px;
+            padding: 0px;
+            -webkit-box-pack: center;
+            justify-content: center;
+            border: 0px;
+            img {
+              display: inline-block;
+              width: 26px;
+              height: 26px;
+              // background-color: #ffffff;
+            }
+          }
+        }
+        .header__navigationBar-voucher {
+          display: flex;
+          flex-direction: column;
+          -webkit-box-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          align-items: center;
+          gap: 0.5rem;
+          min-width: 90px;
+          padding: 0.365rem 0.75rem;
+          font-size: 13px;
+          position: relative;
+          cursor: pointer;
+          font-weight: 500;
+          color: rgb(130, 134, 158);
+          img {
+            height: 36px;
+            width: 36px;
+            vertical-align: middle;
+          }
+          .number_cart {
+            position: absolute;
+            top: 5px;
+            left: calc(50% + 15px);
+            .cart_point {
+              min-width: 1rem;
+              height: 1rem;
+              padding: 0rem 0.25rem;
+              background: rgb(218, 67, 67);
+              border-radius: 0.5rem;
+              display: flex;
+              -webkit-box-pack: center;
+              justify-content: center;
+              -webkit-box-align: center;
+              align-items: center;
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              transform: translate(50%, -50%);
+              transform-origin: 100% 0px;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.container {
+  max-width: 1234px;
+  margin: 0 auto;
+  height: 42px;
+  justify-content: space-between;
+  // display: flex;
+  align-items: center;
+}
+
+.highlight {
+  font-weight: 800;
+
+  color: rgb(235, 31, 58);
+}
