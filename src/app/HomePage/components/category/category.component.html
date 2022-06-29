@@ -1,0 +1,123 @@
+<section class="sidebar">
+  <div class="sidebar__menu">
+    <div class="sidebar__menu-list">
+      <a class="sidebar__menu-item" *ngFor="let category of categories" (mouseover)="showSubMenu(category.name)"
+        (mouseout)="hideItem = false">
+        <div class="sidebar__menu-detail">
+          <img [src]="category.image" alt="" />
+          <p>{{category.name}}</p>
+        </div>
+      </a>
+      <!-- <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+            alt="" />
+          <p>Apple product</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/Y7KEp2iUC1syVaF1SQuQ8ZPCLu8PVhCKqadoVKlI8ON-vKqxyvi0EbgM00Ky8Zb_wIcl9Q8HTLZkQj_MuTzqyJhGuLJz8mFTqw=rw"
+            alt="" />
+          <p>PC - Computer set</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/iRXHBhcy0POD2QZ8HdjIsEhi_PyXoTkDja7HNcASAffs8SFIDCpibFnhDOYLSOtLEFMFrUMTl6LAG9bTBjLX=rw"
+            alt="" />
+          <p>PC - Computer Monitor</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/E8-60MiG4OduP7DyMTdMEdCWEe34sGNJoCCInwqob_5uCcYk1TqMzHlJuURHYGMjSohgUmhiyQOKMAqqDw=rw"
+            alt="" />
+          <p>PC - Computer Components</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/qtC62XnXkTsyJbMok7Z7Uu5GOPvhqslzU5YscZZ0HvorTWRs0Qg5s8gWU6l6CTcmc-pQA2y1myJCZ92t9VDq=rw"
+            alt="" />
+          <p>PC - Game & Stream</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/WpwvoWTSzoEzFLm7Yqus_aakVaJxDBgDGXBQTeZLOw_Gk5xTYrtTBdVmIttUJ_-ZwAlWs6rvUnJD24p6tQ=rw"
+            alt="" />
+          <p>PC - Accessories</p>
+        </div>
+      </a>
+
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/dkzFFaKYmPLLkPnC-cyefC1u1Qh0Iy_6Loz7adsbIMs-KAK8FA_PwUOklM3gEppESc1uSeaTa63U4Vejifo=rw"
+            alt="" />
+          <p>Phones & accessories</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/kpwSAevTNcuxbW8wa4Wthkw1Tvi37ebTlm3ULD9MzcvWLmL-IxHQajG1Tw5enhQPCc767cTt-Hfkc_oxVjQ=rw"
+            alt="" />
+          <p>Camera & video camera</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/GFE6CDOIwdWhDiKag72LyvQJ612GEZTw2ZdS2sa_uREW2RgrS5A1540WuyVSfEDoGgczchT0ksBUuPczHYhL1F8S7EOQzgM=rw"
+            alt="" />
+          <p>Appliances - Household electrical</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/XO5k-tA6oI4Cb9cM-xqcytNL6JJL9twUaAcvkkSI34M4in7HCUowxUNb5jg6DNrBBo4USJmb1cMEMbhedBQ=rw"
+            alt="" />
+          <p>Audio equipments</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/cZITfQM6_DFjN7YVP32Ck2YF423oxvO3KXhbo-SbQhkYVqGiGhNEadzieIpQV59QhQM6Gj4OWP6ZRLv4PdLi5DcYUmI3Y2U=rw"
+            alt="" />
+          <p>Smart device</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/BUbooruRWezoEwN2qjqve0RyQXSl3-tyFjx8961QaIC-vhpGoo74BeDK8UGsU7bm5KSHXwxMmWu5bGlKxZh_=rw"
+            alt="" />
+          <p>Office equipment</p>
+        </div>
+      </a>
+      <a href="" class="sidebar__menu-item">
+        <div class="sidebar__menu-detail">
+          <img
+            src="https://lh3.googleusercontent.com/xQNTUsKuQP8S_IoRbjRIN28exoDh8lx7reM4I4XpGP7ZPqSDKN8gxhKemblPrKX_-INp9Wu1Q6MnWe3-hjgW=rw"
+            alt="" />
+          <p>Enterprise solutions</p>
+        </div>
+      </a> -->
+
+    </div>
+
+
+    <app-sub-menu [index]="index" [style.display]="hideItem == true ? 'block' : 'none'" (mouseover)="showSubMenu(index)" (mouseout)="hideItem = false">
+    </app-sub-menu>
+  </div>
+</section>

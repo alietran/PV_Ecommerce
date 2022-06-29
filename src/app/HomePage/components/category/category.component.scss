@@ -1,0 +1,48 @@
+.sidebar__menu {
+    position: absolute;
+    left: 158px;
+    top: 15px;
+    z-index: 20;
+    height: auto;
+    border-radius: 0.5rem;
+    width: 12.4rem;
+    background-color: #fff;
+    align-items: center;
+
+    &-list {
+      .sidebar__menu-item {
+        font-size: 12px;
+        img {
+          height: 22px;
+          width: 22px;
+        }
+        .sidebar__menu-detail {
+          gap: 0.5rem;
+          display: flex;
+          height: 2rem;
+          padding: 0 8px;
+          align-items: center;
+          vertical-align: middle;
+          transition: all 0.5s;
+          &:hover {
+            background-color: rgb(243, 245, 252);
+            border-radius: 0.5rem;
+          }
+          p {
+            font-size: 12px;
+            align-items: center;
+            vertical-align: middle;
+            color: black;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+  }
+p {
+  margin-bottom: 0;
+}
+a {
+  display: block;
+}
