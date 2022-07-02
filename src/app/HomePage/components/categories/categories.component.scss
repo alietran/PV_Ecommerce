@@ -1,0 +1,52 @@
+.productCate {
+  position: relative;
+  .container {
+    max-width: 1247px;
+    margin: 0 auto;
+    .productCate__wrap {
+      background-image: url("../../../../assets/img/laptop.jpg");
+      background-repeat: no-repeat;
+
+      min-height: 416px;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center top;
+
+      .productCate__title {
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.463);
+
+        width: 100%;
+        position: relative;
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        height: 3.7rem;
+        background-color: unset;
+        h5 {
+          font-weight: 700;
+        }
+        a i {
+          margin-top: 10px;
+        }
+      }
+      .productCate__list {
+        padding: 12px;
+
+        .swiper-container {
+          margin-left: auto;
+          margin-right: auto;
+          position: relative;
+          overflow: hidden;
+          list-style: none;
+        }
+      }
+    }
+  }
+}

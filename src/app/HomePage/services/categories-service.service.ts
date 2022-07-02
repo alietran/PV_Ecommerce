@@ -13,11 +13,11 @@ import { Category } from '../Model/Category.model';
 export class CategoriesService {
 
   categories: Category[] = [];
-  api=this.enviromentService.url+"/categories?page=1&limit=10&search&sort[name]=asc";
+  category=this.enviromentService.url+"/categories?page=1&limit=10&search&sort[name]=asc";
   constructor(private enviromentService: EnviromentService, private http: HttpClient) { }
 
   getAllCate ():Observable<any>{
-    return this.http.get<any>(this.api).pipe(map(res => {
+    return this.http.get<any>(this.category).pipe(map(res => {
        console.log("res",res)
       return res;
 

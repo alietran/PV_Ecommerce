@@ -8,6 +8,7 @@
       height: 566px;
       width: 100%;
       object-fit: cover;
+      margin-bottom: 20px;
     }
   }
   .slideshow {
@@ -31,10 +32,10 @@
       .next,
       .prev {
         cursor: pointer;
-        width: 40px;
-        height: 60px;
+        // width: 40px;
+        // height: 60px;
         font-size: 20px;
-        font-weight: bold;
+        // background-color: #f2f2f2;
         color: #fff;
         position: absolute;
         bottom: 50%;
@@ -42,10 +43,12 @@
         transition: all 0.5s;
       }
       .next {
-        right: 29%;
+        right: 23%;
+        top: 41%;
       }
       .prev {
-        left: 29%;
+        left: 23%;
+        top: 41%;
       }
     }
 
@@ -70,7 +73,7 @@
     }
     .dotList {
       position: absolute;
-      bottom: 112px;
+      bottom: 132px;
       left: 47%;
     }
     /* The dots/bullets/indicators */
@@ -110,7 +113,7 @@
       }
     }
   }
-  .banner {
+  .banner__promotion {
     display: flex;
     max-width: 1234px;
     margin: 0 auto;
@@ -118,8 +121,14 @@
     z-index: 15;
     top: -15px;
     justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
     img {
+      transition: all 0.3s ease;
       border-radius: 10px;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 }

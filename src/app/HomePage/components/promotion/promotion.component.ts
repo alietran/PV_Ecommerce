@@ -37,7 +37,7 @@ auto(){
   if(this.slideIndex>slides.length){
     this.slideIndex = 1;
   }
-  console.log(this.slideIndex)
+  // console.log(this.slideIndex)
   this.showSlides(this.slideIndex);
   setTimeout(()=>this.auto(), 5000);
 
@@ -45,7 +45,7 @@ auto(){
 plusSilde(n:number){
 let slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
   let dots = document.getElementsByClassName("dot");
-  console.log(this.slideIndex)
+  // console.log(this.slideIndex)
   this.slideIndex += n;
   if(this.slideIndex > slides.length){
     this.slideIndex = 1;
