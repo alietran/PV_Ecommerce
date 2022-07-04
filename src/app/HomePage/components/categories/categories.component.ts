@@ -1,10 +1,11 @@
 // import { ProductService } from './../../services/product.service';
 import { CategoriesService } from './../../services/categories-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../Model/Category.model';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../sale-product/sale-product.component';
 import SwiperCore, { Pagination, Navigation } from 'swiper'
+import { Router } from '@angular/router';
 
 SwiperCore.use([Pagination, Navigation])
 @Component({
@@ -14,8 +15,8 @@ SwiperCore.use([Pagination, Navigation])
 })
 export class CategoriesComponent implements OnInit {
   laptops: Product[]= [];
-
-  constructor(private productService: ProductService){
+@Input() item : any
+  constructor(private productService: ProductService,private router: Router){
 
   }
 
@@ -28,4 +29,10 @@ this.getAllCateLap();
       this.laptops = data.data
     })
   }
+  getDetail(id: number){
+    //  this.router.navigateByUrl(`/products/${id}`);
+
+     this.router.navigate(['/products/',id]);
+  }
+
 }

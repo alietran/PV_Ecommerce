@@ -1,3 +1,4 @@
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { TruncatePipe } from '../Pipe/truncate.pipe';
 import { DeviceComponent } from './components/device/device.component';
 import { ProductComponent } from './components/product/product.component';
-
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { NgxPaginationModule } from 'ngx-pagination'
 
 
 @NgModule({
@@ -28,13 +30,14 @@ import { ProductComponent } from './components/product/product.component';
     ProductItemComponent,
     SaleProductComponent,
     BannerComponent,
-TruncatePipe,
-DeviceComponent,
-ProductComponent
+    TruncatePipe,
+    DeviceComponent,
+    ProductComponent,
+    ProductDetailComponent
   ],
-  imports: [BrowserModule,HttpClientModule,SwiperModule],
+  imports: [BrowserModule, HttpClientModule, SwiperModule, NgxPaginationModule],
   providers: [],
   bootstrap: [ClientComponent],
-  exports: [PromotionComponent, LandingPageComponent, SidebarComponent,CategoriesComponent]
+  exports: [PromotionComponent, LandingPageComponent, SidebarComponent, CategoriesComponent]
 })
-export class ClientModule {}
+export class ClientModule { }

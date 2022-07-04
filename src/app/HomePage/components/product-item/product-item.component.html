@@ -1,11 +1,9 @@
-<div class="swiper-container">
+ <div class="swiper-container">
   <div class="swiper">
-    <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
-      <!-- Slides -->
       <div class="swiper-slide">
         <div class="swiper-slide--item">
-          <a href="#" style="    text-decoration: none;color: unset; cursor: pointer">
+          <a (click)="getDetail(item._id)" style="    text-decoration: none;color: unset; cursor: pointer">
             <div class="swiper-slide--product-cart">
               <div class="swiper-slide--product-item">
                 <div class="swiper-slide--product-item-heading">
@@ -20,7 +18,7 @@
                         TIẾT KIỆM
                       </div>
                       <div class="title-price">
-                        191.000&nbsp;₫
+                        191.000&nbsp;
                       </div>
                     </div>
                   </div>
@@ -33,10 +31,10 @@
                 <div class="swiper-slide--product-item-price">
                   <div class="swiper-slide--product-item-price--text">
                     <div class="subtitle">
-                      {{price | currency: "AUD"}}&nbsp;
+                      {{price | currency: "AUD" : "$AUD "}}&nbsp;
                     </div>
                     <div class="save">
-                      <p>{{990 | currency: "AUD"}}&nbsp;</p>
+                      <p>{{990 | currency: "AUD" : "$AUD "}}&nbsp;</p>
                       <p>-{{sale}}%</p>
                     </div>
                   </div>

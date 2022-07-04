@@ -4,6 +4,7 @@
   position: relative;
   overflow: hidden;
   list-style: none;
+
   .swiper {
     width: 100%;
     height: 100%;
@@ -91,7 +92,7 @@
                 }
               }
               &-title {
-                height: 3rem;
+                height: 2rem;
                 &--text {
                   margin: 0px;
                   padding: 0px;
@@ -190,3 +191,35 @@
 {
   display: none
 }
+
+  ::ng-deep .swiper-button-next:after {
+    font-weight: 600;
+    color: #000;
+    /* color: #fff; */
+    /* width: 100%; */
+    padding:12px 17px 12px 20px;
+    content: "next";
+    font-size: 20px;
+    background-color: rgba(202, 198, 198, 0.7019607843);
+    border-radius: 50% 0 0 50%;
+     visibility: hidden;
+
+}
+  ::ng-deep .swiper-button-prev:after {
+    font-weight: 600;
+    color: #000;
+    /* color: #fff; */
+    /* width: 100%; */
+    padding: 12px 17px 12px 20px;
+    content: "prev";
+    font-size: 20px;
+    background-color: rgba(202, 198, 198, 0.7019607843);
+    border-radius: 0 50% 50% 0;
+    visibility: hidden;
+
+}
+
+ ::ng-deep  .swiper-container:hover .swiper-button-prev:after,::ng-deep .swiper-container:hover  .swiper-button-next:after{
+  visibility: visible;
+}
+

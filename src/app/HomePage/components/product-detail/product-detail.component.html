@@ -1,0 +1,187 @@
+<section class="productDetail" >
+  <div class="container">
+    <div class="productDetail__wrapper">
+      <div class="productDetail__wrapper-breadcrumbs">
+        <div class="breadcrumbs-icon">
+          <a class="breadcrumbs-icon--link" href="/">
+            <img src="../../../../assets/img/home-icon.svg" alt="">
+          </a>
+          <span class="css-rhmj3t">&gt;</span>
+        </div>
+        <div class="breadcrumbs-name">
+          <a href="/">{{productDetail.name}}</a>
+        </div>
+      </div>
+      <div class="productDetail__wrapper-content">
+        <div class="productDetail__wrapper-content--left">
+          <div class="productDetail__wrapper-content--box">
+            <div class="box__content">
+              <div class="box__content-left">
+                <div class="box__content-left--img">
+                  <div class="img__box">
+                    <div class="img__content">
+
+
+                      <img
+                        [src]="productDetail.galleries[index].url"
+                        alt="">
+                    </div>
+                  </div>
+                  <div class="img__library">
+                    <div class="img__library-content " *ngFor="let image of productDetail.galleries; index as i">
+                      <div class="img__library-content--item" [class.active]="index==i">
+                        <img
+                          [src]="image.url"
+                          [alt]="image.label"
+                          (mouseover)="changeImage(i)">
+
+                      </div>
+                    </div>
+                    <!-- <div class="img__library-content">
+                      <div class="img__library-content--item">
+                        <img
+                          src="https://lh3.googleusercontent.com/0AOFKAm5yoAfIXGasQMNJ5IVCjnR0vUVUolU48IMNAXTtFjTh92V4J9fVg0SeHEVvbHFB2rluI-BTkuiYpn1=rw"
+                          alt="">
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="box__content-left--line">
+                  <div class="line"></div>
+                </div>
+                <!-- <div class="box__content-left--text">
+                  <p>
+                    - Kiểu kết nối: Có dây
+                    <br>
+                    - Cảm biến: ATG4090
+                  </p>
+                </div> -->
+              </div>
+              <div class="box__content-right">
+                <div class="content__title">
+                  <h1>{{productDetail.name}}</h1>
+                  <div class="content__trademark">
+                    Brand
+                    <a class="content__trademark-link" href="/">
+                      <span style="color: rgb(20, 53, 195)">{{productDetail.category.name}}</span>
+                    </a>
+                    <span class="content__trademark-line"></span>
+                    SKU: {{productDetail.sku}}
+                  </div>
+                </div>
+                <div class="content__color">
+                  <div class="content__color--box">
+                    <div class="content__color--box-title">
+                      Color: Black
+                    </div>
+                    <div class="content__color--box-color">
+                      <div class="box-color--content active">Black</div>
+                      <div class="box-color--content">Pink</div>
+                      <div class="box-color--content">White</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content__price">
+                  <div class="content__price--title">{{productDetail.price | currency: "AUD" : "$AUD "}}
+                  </div>
+                  <div class="content__price--discount">
+                    <div class="discount-text">{{2000 | currency: "AUD" : "$AUD "}}
+                    </div>
+                  </div>
+                </div>
+                <div class="content__line">
+                  <div class="line"></div>
+                </div>
+                <div class="content__title-discount">
+                Choose one of the following promotions
+                </div>
+                <div class="content__discount ">
+                  <div class="content__discount-gift">
+                    <img src="../../../../assets/img/gift-icon.svg" alt="gift-icon"/>
+                  </div>
+                  <div class="content__discount-box">
+                    <div class="box-title">
+                       <span class="box-title-price">{{100 | currency: "AUD" : "$AUD "}}</span> off
+                    </div>
+                    <div class="box-expiryDay">
+                      <div class="box-expiryDay-day">
+                        Expiry Date: 27/7/2022
+                      </div>
+                      <div class="box-expiryDay-apply">
+                        Apply
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="content__button">
+                  <button class="content__button--buy">
+                    BUY NOW
+                  </button>
+                  <button class="content__button--add">
+                    ADD TO CART
+                  </button>
+                </div>
+                <div class="content__line">
+                  <div class="line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="productDetail__wrapper-content--right">
+          <div class="productDetail__wrapper-content--info">
+            <div class="info-policy">
+              <h4>Sales policy</h4>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../../../../assets/img/struck-icon.svg" alt="">
+                </div>
+                <div class="ship-text">Free delivery for orders from $50AUD </div>
+              </div>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../../../../assets/img/shield-icon.svg" alt="">
+                </div>
+                <div class="ship-text">100% genuine guarantee</div>
+              </div>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../../../../assets/img/change-icon .svg" alt="">
+                </div>
+                <div class="ship-text">Return within 10 days</div>
+              </div>
+            </div>
+            <div class="info-service">
+              <h4>Dịch vụ khác</h4>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../../../../assets/img/setting-icon.svg" alt=""/>
+                </div>
+                <div class="ship-text">Repair of the same price $6AUD </div>
+              </div>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../ ../../../../../assets/img/computer-icon.svg" alt="">
+                </div>
+                <div class="ship-text">Computer and laptop cleaning.</div>
+              </div>
+              <div class="info-policy--ship">
+                <div class="ship-img">
+                  <img src="../../../../assets/img/shield-icon.svg" alt="">
+                </div>
+                <div class="ship-text">Home warranty.</div>
+              </div>
+            </div>
+            <a style=" margin-left: 2rem; color:#1435c3" href="/">See details</a>
+          </div>
+        </div>
+      </div>
+      <div class="productDetail__wrapper-desc">
+        <div class="desc__title">
+          <h5>Description</h5>
+          <div class="desc__title-content" [innerHtml]="productDetail.description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

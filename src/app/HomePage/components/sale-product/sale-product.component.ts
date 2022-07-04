@@ -8,6 +8,11 @@ export interface Product {
   name: string
   price: number
   image: string
+  sku: number
+  desc: string
+  quantity: number
+  warranty: number
+  slug: string
 }
 @Component({
   selector: 'app-sale-product',
@@ -58,7 +63,7 @@ export class SaleProductComponent implements OnInit {
     if(distance < 0 ){
       clearInterval();
     }
-    console.log("distance",distance);
+
   }
 }
 

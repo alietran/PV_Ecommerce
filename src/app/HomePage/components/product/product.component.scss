@@ -1,0 +1,214 @@
+.product {
+  .container {
+    max-width: 1247px;
+    margin: 0 auto;
+
+    margin-bottom: 2rem;
+    .product__wrapper {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      .product__title {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 3.5rem;
+      }
+      .product__list {
+        background-color: #f8f8fc;
+        display: grid;
+        // margin-bottom: 20px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3px;
+        padding: 2px 0;
+        &-item {
+          .swiper-slide--product-cart {
+            position: relative;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            .swiper-slide--product-item {
+              position: relative;
+              flex: 1 0 auto;
+              margin-bottom: 0.5rem;
+              &-heading {
+                position: relative;
+                margin-bottom: 0.25rem;
+                .product-item-heading__img {
+                  position: relative;
+                  padding-bottom: 100%;
+                  &__item {
+                    display: inline-block;
+                    overflow: hidden;
+                    height: 100%;
+                    position: absolute;
+                    inset: 0px;
+                    object-fit: contain;
+                    transition: all 0.2s;
+                    img {
+                      display: block;
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                    }
+                    &:hover {
+                      transform: scale(1.05);
+                    }
+                  }
+                }
+                .product-item-heading__save {
+                  position: absolute;
+                  bottom: 0px;
+                  left: 0px;
+                  &__item {
+                    height: 35px;
+                    line-height: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA5NiA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iOTYiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXIpIiAvPgogIDxtYXNrIGlkPSJtYXNrMCIgbWFzay10eXBlPSJhbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9Ijk2IiBoZWlnaHQ9IjQwIj4KICAgIDxyZWN0IHdpZHRoPSI5NiIgaGVpZ2h0PSI0MCIgcng9IjQiIGZpbGw9IndoaXRlIiAvPgogIDwvbWFzaz4KICA8ZyBtYXNrPSJ1cmwoI21hc2swKSI+CiAgICA8cGF0aCBvcGFjaXR5PSIwLjMiCiAgICAgIGQ9Ik03NC4yNDQ2IC05LjAyODY5TDY1Ljg3NjcgOC45MTYyMUw3MC43NzA4IDExLjE5ODNMNjMuOTI0NCAyNS44ODA1TDg0LjQ3MjQgMTEuNjI5M0w3Ny45NDcgOC41ODY0Mkw5MC41NTgxIC0xLjQyMTU2TDc0LjI0NDYgLTkuMDI4NjlaIgogICAgICBmaWxsPSIjMUIxRDI5IiAvPgogIDwvZz4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjM1LjcyMDkiIHkxPSIxLjY2NTQ0ZS0wNiIgeDI9IjU3Ljg4ODYiIHkyPSI0MC4wODczIgogICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNBQTIwRkYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzQxM0VGRiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgo8L3N2Zz4=)
+                      0% 0% / cover no-repeat;
+                    background-repeat: no-repeat;
+                    padding: 0.1rem 0.8rem;
+                    border-radius: 0.25rem;
+                    .title-save {
+                      font-size: 10px;
+                      font-weight: 700;
+                      color: rgb(255, 213, 145);
+                    }
+                    .title-price {
+                      font-size: 13px;
+                      line-height: 18px;
+                      font-weight: 700;
+                      color: rgb(255, 255, 255);
+                    }
+                  }
+                }
+              }
+              &-title {
+                height: 2rem;
+                &--text {
+                  margin: 0px;
+                  padding: 0px;
+                  border-style: none;
+                  border-radius: 0px;
+                  border-width: 1px;
+                  border-color: unset;
+                  opacity: 1;
+                  background-color: transparent;
+                  color: rgb(67, 70, 87);
+                  font-weight: 400;
+                  text-decoration: unset;
+                  font-size: 13px;
+                  line-height: 16px;
+                  overflow: hidden;
+                  max-width: unset;
+                  transition: color 0.3s ease 0s;
+                }
+              }
+              &-price {
+                position: relative;
+                margin-top: 0.25rem;
+                padding-right: unset;
+                &--text {
+                  display: flex;
+                  flex-direction: column;
+                  -webkit-box-align: start;
+                  align-items: start;
+                  .subtitle {
+                    margin: 0px;
+                    padding: 0px;
+                    border-style: none;
+                    border-radius: 0px;
+                    border-width: 1px;
+                    border-color: unset;
+                    opacity: 1;
+                    background-color: transparent;
+                    color: rgb(20, 53, 195);
+                    font-weight: 700;
+                    text-decoration: unset;
+                    font-size: 17px;
+                    font-weight: bold;
+                    line-height: 24px;
+                    min-width: unset;
+                    transition: color 0.3s ease 0s;
+                  }
+                  .save {
+                    display: flex;
+                    height: 1rem;
+                    p:first-child {
+                      margin: 0px 0.25rem 0px 0px;
+                      padding: 0px;
+                      border-style: none;
+                      border-radius: 0px;
+                      border-width: 1px;
+                      border-color: unset;
+                      opacity: 1;
+                      background-color: transparent;
+                      color: rgb(130, 134, 158);
+                      font-weight: 400;
+                      font-size: 13px;
+                      line-height: 16px;
+                      min-width: unset;
+                      transition: color 0.3s ease 0s;
+                      text-decoration: line-through;
+                    }
+                    p:last-child {
+                      margin: 0px;
+                      padding: 0px;
+                      border-style: none;
+                      border-radius: 0px;
+                      border-width: 1px;
+                      border-color: unset;
+                      opacity: 1;
+                      background-color: transparent;
+                      color: rgb(20, 53, 195);
+                      font-weight: 400;
+                      text-decoration: unset;
+                      font-size: 13px;
+                      line-height: 16px;
+                      max-width: unset;
+                      transition: color 0.3s ease 0s;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .pagenation {
+      margin-top: 20px;
+      text-align: center;
+      // justify-content: space-between;
+      // background-color: #000;
+    }
+  }
+}
+::ng-deep .ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #1435c3 !important;
+  color: #fff !important;
+  // background-color: ;
+  cursor: default;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+::ng-deep .ngx-pagination li a:not([href]):not([class]) {
+  color: inherit;
+  text-decoration: none;
+  background-color: #fff;
+  margin-right: 5px;
+  border: 1px solid #4343431c;
+  border-radius: 5px;
+}
+::ng-deep .ngx-pagination .pagination-next a:after, .ngx-pagination .pagination-next.disabled:after{
+  margin-left: 0 !important;
+}
+::ng-deep .ngx-pagination .pagination-prev a:after, .ngx-pagination .pagination-next.disabled:after{
+  margin-right: 0 !important;
+}

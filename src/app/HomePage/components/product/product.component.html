@@ -1,1 +1,61 @@
+<div class="product">
+  <div class="container">
+    <div class="product__wrapper">
+      <div class="product__title">
+        <h5>Product</h5>
+      </div>
+      <div class="product__list">
+        <div class="product__list-item"
+          *ngFor="let item of products | paginate: { itemsPerPage: productItem  , currentPage: page} ">
+          <!-- [routerLink]="['/products/',item.id]" -->
+          <a (click)="getDetail(item._id)"  routerLinkActive="router-link-active"  style="text-decoration: none;color: unset; cursor: pointer; display: block">
+            <div class="swiper-slide--product-cart">
+              <div class="swiper-slide--product-item">
+                <div class="swiper-slide--product-item-heading">
+                  <div class="product-item-heading__img">
+                    <div height="100%" class="product-item-heading__img__item">
+                      <img [src]="item.image" alt="">
+                    </div>
+                  </div>
+                  <div class="product-item-heading__save">
+                    <div class="product-item-heading__save__item">
+                      <div class="title-save">
+                        TIẾT KIỆM
+                      </div>
+                      <div class="title-price">
+                        191.000&nbsp;₫
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide--product-item-title">
+                  <div class="swiper-slide--product-item-title--text">
+                    {{item.name | truncate}}
+                  </div>
+                </div>
+                <div class="swiper-slide--product-item-price">
+                  <div class="swiper-slide--product-item-price--text">
+                    <div class="subtitle">
+                      {{item.price | currency: "AUD" : "$AUD "}}&nbsp;
+                    </div>
+                    <div class="save">
+                      <p>{{990 | currency: "AUD" : "$AUD "}}&nbsp;</p>
+                      <p>-{{item.sale}}%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
 
+        </div>
+        <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+      </div>
+
+    </div>
+    <div class="pagenation">
+
+      <pagination-controls previousLabel="" nextLabel="" (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

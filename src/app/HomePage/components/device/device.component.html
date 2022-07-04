@@ -4,7 +4,7 @@
       <div class="device__wrapper--left">
         <div class="device__wrapper--left-content">
           <div class="device__wrapper--left-header">
-            <div class="device__wrapper--left-title">SPEAKERS - HEADPHONES - EXTERNAL DEVICES</div>
+            <div class="device__wrapper--left-title">CATEGORIES</div>
             <a class="device__wrapper--left-link" href="#">
               <!-- <div class="device__wrapper--left-all">Xem tất cả <img src="./public/img/arrow-right.svg" alt=""></div> -->
               <span style=" font-weight: 400;" class="device__wrapper--left-all">View all <svg fill="none"
@@ -27,7 +27,22 @@
             </div>
             <div class="device__wrapper--left-body-right">
               <div class="device__wrapper--left-body-right-card">
-                <a class="device__wrapper--right-body-link" href="#">
+                <a class="device__wrapper--right-body-link" href="#" *ngFor="let item of category ">
+                  <div class="device__wrapper--right-body-wrap">
+                    <div class="device__wrapper--right-body-title">
+                      {{item.name}}
+                    </div>
+                    <div class="device__wrapper--right-body-text">
+                      {{item.description}}
+                    </div>
+                    <div class="device__wrapper--right-body-img">
+                      <div class="device__wrapper--right-body-img__item">
+                        <img [src]="item.image" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <!-- <a class="device__wrapper--right-body-link" href="#">
                   <div class="device__wrapper--right-body-wrap">
                     <div class="device__wrapper--right-body-title">
                       Chuột Gaming
@@ -71,28 +86,13 @@
                         alt="">
                     </div>
                   </div>
-                </a>
-                <a class="device__wrapper--right-body-link" href="#">
-                  <div class="device__wrapper--right-body-wrap">
-                    <div class="device__wrapper--right-body-title">
-                      Chuột Gaming
-                    </div>
-                    <div class="device__wrapper--right-body-text">
-                      Tốc độ chuyên nghiệp, giảm ngay tới 45%
-                    </div>
-                    <div class="device__wrapper--right-body-img">
-                      <img
-                        src="https://lh3.googleusercontent.com/9VuDtVTE_RvRusFv4YCxFwhZ9XSMbmKqgtHoOy73THsg1uJahr0vp2qOZ2mtR2op0rOUUS1hUtmKPgXwp8jK9AgTiHYgbK9zyg=rw-w300"
-                        alt="">
-                    </div>
-                  </div>
-                </a>
+                </a> -->
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="device__wrapper--left">
+      <!-- <div class="device__wrapper--left">
         <div class="device__wrapper--left-content">
           <div class="device__wrapper--left-header">
             <div class="device__wrapper--left-title">TV - ELECTRICAL - HOUSEHOLD</div>
@@ -182,7 +182,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="device_banner">
       <div class="device_banner-img">

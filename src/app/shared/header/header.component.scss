@@ -4,7 +4,7 @@
       width: 100%;
       cursor: pointer;
       height: 56px;
-      z-index: 0;
+      z-index: 10;
       object-fit: cover;
     }
   }
@@ -46,8 +46,8 @@
     height: 88px;
     background-color: rgb(255, 255, 255);
     position: sticky;
-    top: 0px;
-    z-index: 1040;
+    top: -4px;
+    z-index: 99;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1rem 0px;
     // height: 88px;
     min-width: 68px;

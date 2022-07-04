@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { EnviromentService } from 'src/app/enviroment.service';
+import { Product } from '../components/sale-product/sale-product.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,11 @@ import { EnviromentService } from 'src/app/enviroment.service';
 export class ProductService {
    laptop=this.enviromentService.url+"/products?page=1&limit=10&search=&sort[createdAt]=asc&where[category][$eq]=627931d711256e063d363c79";
   product=this.enviromentService.url+"/products?page=1&limit=10&search=&sort[createdAt]=asc";
-
+  productDetail = this.enviromentService.url+"/products";
   constructor(private enviromentService: EnviromentService, private http: HttpClient) { }
     getAllLap ():Observable<any>{
     return this.http.get<any>(this.laptop).pipe(map(res => {
-       console.log("re12s",res)
+      //  console.log("re12s",res)
       return res;
 
     }))}
@@ -24,6 +25,9 @@ export class ProductService {
       return res;
 
     }))
+  }
 
+   getProductDetail(id:number):Observable<any>{
+    return this.http.get<any>(this.productDetail+"/"+id)
   }
 }
