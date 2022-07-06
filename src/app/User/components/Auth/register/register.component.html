@@ -1,0 +1,68 @@
+<section class="signup__background">
+
+  <form id="signupForm" class="signup__form" action="" method="post" (ngSubmit)="register()" [formGroup]="registerForm">
+    <!-- <img class="signup__form__logo" src="./public/img/book.png" alt="logo"> -->
+    <h1 class="signup__form__title">Register <br></h1>
+    <div class="signup_wrapper">
+      <div class="signup__form__input mr-2">
+        <label for="firstName">First Name </label>
+        <input value="" id="firstName" type="text" formControlName="firstName" name="firstName">
+      </div>
+      <div class="signup__form__input">
+        <label for="lastName">Last Name</label>
+        <input value="" id="lastName" type="text" formControlName="lastName" name="lastName">
+      </div>
+    </div>
+
+    <div class="signup__form__input">
+      <label for="email">Email <span style="color:red; font-weight: normal;">(*)</span></label>
+      <input value="" id="email" type="email" formControlName="email" name="email">
+
+    </div>
+
+    <div class="signup__form__input">
+      <label for="password">Password<span style="color:red; font-weight: normal;">(*)</span></label>
+      <input value="" id="password" type="password" formControlName="password" name="password">
+
+
+    </div>
+    <div class="signup__form__input">
+      <label for="phone">Phone <span style="color:red; font-weight: normal;">(*)</span></label>
+      <input value="" id="phone" type="text" formControlName="phone" name="phone">
+
+
+    </div>
+    <div class="signup_wrapper ">
+      <div class="signup__form__input form-group">
+        <label for="dob">Date Of Birth</label>
+        <mat-form-field appearance="fill" class="mr-3">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob" [ngModel]="today " id="dob" name="dob">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <span class="text-danger" *ngIf="registerForm.get('dob')?.touched && registerForm.get('dob')?.invalid">
+          Dob is required </span>
+      </div>
+
+      <div class="signup__form__input justify-content-center">
+        <label for="gender">Gender <span style="color:red; font-weight: normal;">(*)</span></label>
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+
+    </div>
+
+
+    <input type="submit" name="btn-login" class="btn btn--primary" value="Register" style="padding:13px 0"
+      [disabled]="!registerForm.valid">
+    <div style="margin-left:auto; margin-top: 10px; text-align:center; width:100%">You have an account?
+      <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+        style="font-weight: bold; color: blue; margin-left: 5px; cursor:pointer">Login</a>
+    </div>
+  </form>
+</section>
