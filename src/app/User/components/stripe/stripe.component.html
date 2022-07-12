@@ -1,0 +1,13 @@
+
+
+<!-- <p>{{isLoading}}</p> -->
+<!-- <p>{{elementsOptions?.clientSecret}}</p> -->
+<!-- <div *ngIf="!isLoading"> -->
+  <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret ">
+    <ngx-stripe-payment [clientSecret]="clientSecret">
+    </ngx-stripe-payment>
+  </ng-container>
+
+  <button mat-raised-button color="primary" (click)="pay()">Checkout</button>
+
+<!-- </div> -->

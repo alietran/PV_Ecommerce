@@ -14,25 +14,28 @@ SwiperCore.use([Pagination, Navigation])
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  laptops: Product[]= [];
-@Input() item : any
-  constructor(private productService: ProductService,private router: Router){
+  laptops: Product[] = [];
+  isLoading: boolean = true;
+  @Input() item: any
+  constructor(private productService: ProductService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-this.getAllCateLap();
+    this.getAllCateLap();
   }
   getAllCateLap() {
+    this.isLoading = true
     this.productService.getAllLap().subscribe((data: any) => {
       console.log('1224', data)
       this.laptops = data.data
+      this.isLoading = false
     })
   }
-  getDetail(id: number){
+  getDetail(id: number) {
     //  this.router.navigateByUrl(`/products/${id}`);
 
-     this.router.navigate(['/products/',id]);
+    this.router.navigate(['/products/', id]);
   }
 
 }

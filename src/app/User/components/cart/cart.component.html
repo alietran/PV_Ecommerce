@@ -1,0 +1,143 @@
+<section class="cart">
+  <div class="container">
+    <div class="cart__wrapper">
+      <div class="cart__wrapper-breadcrumbs">
+        <div class="breadcrumbs-icon">
+          <a class="breadcrumbs-icon--link" href="/">
+            <img src="../../../../assets/img/home-icon.svg" alt="">
+          </a>
+          <span class="css-rhmj3t">&gt;</span>
+        </div>
+        <div class="breadcrumbs-name">
+          <a href="/">Cart</a>
+        </div>
+      </div>
+
+      <div class="cart__wrapper-content">
+        <div class="cart__wrapper-content--main">
+          <div class="cart__title">
+            <h2>Cart</h2>
+            <a>Delete all</a>
+          </div>
+          <div class="cart__wrapper-content-left">
+            <div class="cart__wrapper-content--box">
+              <div class="box__option">
+                <input type="checkbox" checked="">
+              </div>
+              <div class="box__content">
+                <div class="box__content-name">
+                  <div class="box__content-name-img center">
+                    <img src="../../../../assets/img/phongvu.png" alt="">
+                  </div>
+                  <p class="box__content-name-product">PHONG VO TRADING SERVICE JOINT STOCK COMPANY</p>
+                </div>
+                <div class="box__content-unitPrice center">
+                  <p> Price</p>
+                </div>
+                <div class="box__content-quantity center">
+                  <p>Quantity</p>
+                </div>
+                <div class="box__content-quantity center">
+                  <p>Total</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngIf="isLoading == false">
+              <app-loadding></app-loadding>
+            </div> -->
+            <!-- *ngIf="isLoading == true" -->
+            <div>
+                  <div class="cart__wrapper-content--product" *ngFor="let item of cartList">
+
+                    <div class="box__option">
+                      <input type="checkbox" checked="">
+                    </div>
+                    <div class="box__content">
+                      <div class="box__content-name">
+                        <a class="box__content-name-img center">
+                          <img [src]="item.image" alt="">
+                        </a>
+                        <p class="box__content-name-product">{{item.name}}</p>
+                      </div>
+                      <div class="box__content-unitPrice center">
+                        <p style="font-weight: 600;"> {{item.price | currency: "AUD" : "$AUD "}}</p>
+                      </div>
+                      <div class="box__content-quantity center quanty">
+                        <!-- <div style="opacity: 0">123</div> -->
+                        <div class="box__content-quantity-detail ">
+
+                          <button class="plusItem" (click)="deCrease(item)" [class.disabled]="minimum"><span><svg fill="none"
+                                viewBox="0 0 24 24" size="16" color="textPrimary" height="16" width="16"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M3.25 12C3.25 11.5858 3.58579 11.25 4 11.25H20C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H4C3.58579 12.75 3.25 12.4142 3.25 12Z"
+                                  fill="#82869E"></path>
+                              </svg></span>
+                          </button>
+                          <input value="{{item.quantity}}">
+                          <button class="dashItem" (click)="inCrease(item)"><span><svg fill="none" viewBox="0 0 24 24" size="16"
+                                color="textPrimary" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M12.75 4C12.75 3.58579 12.4142 3.25 12 3.25C11.5858 3.25 11.25 3.58579 11.25 4V11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H11.25V20C11.25 20.4142 11.5858 20.75 12 20.75C12.4142 20.75 12.75 20.4142 12.75 20V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H12.75V4Z"
+                                  fill="#82869E"></path>
+                              </svg></span></button>
+                        </div>
+                        <!-- <br> -->
+                        <div class="delete" (click)="removeItemFromCart(item._id)">Delete</div>
+                        <!-- <div>123</div> -->
+                      </div>
+
+                      <div class="box__content-quantity center">
+                        <p style="font-weight: 600;color: #1435c3"> {{(item.price * item.quantity) | currency: "AUD" :
+                          "$AUD"}}</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="cart__wrapper-content--right">
+          <div class="cart__wrapper-content--info">
+            <h4>Select discount code/coupon</h4>
+            <div class="info-voucher">
+              <div class="info-text"><input type="text " placeholder="Enter your code"></div>
+
+              <button class="apply">Apply</button>
+            </div>
+
+          </div>
+          <div class="cart__wrapper-content--payment">
+
+            <div class="cart__wrapper-content--info">
+              <h4>Payment</h4>
+              <div class="info-payment">
+                <table class="payment-tab">
+                  <tbody>
+                    <tr>
+                      <td>Provisional </td>
+                      <td><span>{{getTotalPrice() | currency: "AUD" : "$AUD "}}</span></td>
+                    </tr>
+                    <tr>
+                      <td>Transport fee </td>
+                      <td><span>FREE</span></td>
+                    </tr>
+                    <tr>
+                      <td>Total </td>
+                      <td><span style="color:red;font-size:18px;font-weight: 500;"> {{getTotalPrice()| currency: "AUD" :
+                          " $AUD "}}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="VAT">(VAT included)</div>
+              </div>
+              <button [routerLink]="['/order']" routerLinkActive="router-link-active"  class="continue" >CONTINUE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

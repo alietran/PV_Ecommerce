@@ -15,6 +15,7 @@ interface LaptopProduct{
 })
 export class ProductItemComponent implements OnInit, OnChanges {
 
+// @Input()name: string = '';
 @Input()name: string = '';
 @Input()price: number =500;
 @Input()image: string='';
@@ -32,7 +33,8 @@ sale: number = 20;
   }
  getDetail(id: number){
     //  this.router.navigateByUrl(`/products/${id}`);
-
+    //  this.api.getUserDetail(this.id).subscribe((data : any) => {
+  console.log("id",id)
      this.router.navigate(['/products/',id]);
   }
 }

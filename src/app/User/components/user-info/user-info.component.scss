@@ -1,0 +1,125 @@
+.signup__background {
+
+  height: 100%;
+  max-width: 835px;
+  background: rgb(255, 255, 255);
+
+  margin: 1rem auto;
+  border-radius: 8px;
+  font-family: "Nunito", sans-serif;
+
+  .signup__form {
+    width: 100%;
+    padding: 40px;
+    display: grid;
+    grid-gap: 10px;
+    .signup_wrapper{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+    }
+    &__logo {
+      width: 70px;
+      height: 70px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 12px;
+    }
+    &__title {
+      margin-bottom: 15px;
+      text-align: center;
+      color: #3f51b5;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 35px;
+      font-family: "Nunito", sans-serif;
+    }
+    &__message {
+      color: red;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    &__input {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: grid;
+      grid-gap: 10px;
+      font-size: 17px;
+      input {
+        font-family: "Nunito", sans-serif;
+        border-radius: 30px;
+        border: 2px solid rgba(192, 192, 192, 0);
+        outline: none;
+        font-size: 16px;
+        padding: 11px 20px;
+        width: 100%;
+        background-color: rgba(243, 244, 246, 1);
+        transition: all 200ms ease-out;
+        &:focus {
+          border: 2px solid rgb(0, 171, 85);
+          transition: all 200ms ease-in;
+        }
+      }
+
+      .signupCheckMessage {
+        font-family: "Roboto", sans-serif;
+        font-weight: normal;
+        font-size: 14px;
+        color: red;
+      }
+    }
+    .errorMessage {
+      border-radius: 8px;
+      box-shadow: none;
+      background-image: none;
+      line-height: 1.5714285714285714;
+      font-size: 0.875rem;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      justify-content: center;
+      display: flex;
+      padding: 6px 16px;
+
+      background-color: rgb(255, 231, 217);
+      color: #ff4842;
+      p {
+        padding: 8px 0;
+        font-size: 16px !important;
+      }
+    }
+  }
+  .btn--primary {
+    color: #fff;
+    background-color: #3f51b5;
+    border: 1px solid transparent;
+    border-radius: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Nunito", sans-serif;
+    padding: 8px 30px;
+    cursor: pointer;
+    outline: none;
+    transition: all 300ms;
+    &--hover:hover {
+      color: #ec455a !important;
+      background-color: #ec455a !important;
+      border: 1px solid #ec455a !important;
+    }
+    &:hover {
+      background-color: #1837e2;
+      color: #fff;
+    }
+  }
+  .invalid-feedback {
+    color: #ff4842;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.1;
+    font-family: "Nunito", sans-serif;
+    margin-top: 3px;
+    margin-left: 17px;
+    font-style: oblique;
+  }
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

@@ -1,0 +1,53 @@
+<section class="signup__background">
+
+  <form id="addressForm" class="signup__form" action="" method="post"  (ngSubmit)="createAddress()" [formGroup]="addressForm">
+    <!-- <img class="signup__form__logo" src="./public/img/book.png" alt="logo"> -->
+    <h2 class="signup__form__title">Receiver Info <br></h2>
+    <div class="signup__form__input">
+      <label for="fullName">Full Name <span style="color:red; font-weight: normal;">(*)</span></label>
+      <input value="" id="fullName" type="fullName" formControlName="fullName" name="fullName">
+
+    </div>
+    <div class="signup_wrapper">
+      <div class="signup__form__input">
+        <label for="email">Email<span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="email" type="email" formControlName="email" name="email">
+
+      </div>
+      <div class="signup__form__input">
+        <label for="phone">Phone <span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="phone" type="text" formControlName="phone" name="phone">
+      </div>
+    </div>
+    <h2 class="signup__form__title">Delivery address <br></h2>
+    <div class="signup_wrapper delivery">
+      <div class="signup__form__input">
+        <label for="city">Province/City<span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="city" type="city" formControlName="city" name="city">
+
+      </div>
+      <div class="signup__form__input">
+        <label for="district">District <span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="district" type="text" formControlName="district" name="district">
+      </div>
+    </div>
+    <div class="signup_wrapper delivery">
+      <div class="signup__form__input">
+        <label for="wards">Wards<span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="wards" type="wards" formControlName="wards" name="wards">
+
+      </div>
+      <div class="signup__form__input">
+        <label for="address">Address <span style="color:red; font-weight: normal;">(*)</span></label>
+        <input value="" id="address" type="text" formControlName="address" name="address">
+      </div>
+    </div>
+    <div class="btn">
+      <!-- [routerLink]="['/order']" -->
+      <button routerLinkActive="router-link-active"  type="submit" name="btn-login" class="btn btn--primary" value="Continue" style="padding:13px 0"
+        [disabled]="!addressForm.valid">Continue</button>
+
+    </div>
+
+  </form>
+</section>

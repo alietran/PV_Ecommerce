@@ -1,41 +1,44 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AdminTemplateComponent } from './Admin/components/admin-template/admin-template.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-
 import { FooterComponent } from './shared/footer/footer.component';
-// import { PromotionComponent } from './HomePage/components/promotion/promotion.component';
-
-// import { CategoryModule } from './HomePage/components/category/category.module';
-// import { ProductCategoryComponent } from './HomePage/components/product-category/product-category.component';
-import { AdminComponent } from './Admin/admin.component';
 import { ClientComponent } from './HomePage/client.component';
 import { ClientRoutingModule } from './HomePage/client-routing.module';
-import { AdminRoutingModule } from './Admin/admin-routing.module';
-import { AdminModule } from './Admin/admin.module';
 import { ClientModule } from './HomePage/client.module';
-// import { ClientModule } from './HomePage/client.module';
 import { SwiperModule } from 'swiper/angular';
-import { TruncatePipe } from './Pipe/truncate.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserRoutingModule } from './User/user-routing.module';
+// import { UserComponent } from './User/user.component';
+import { LoaddingComponent } from './shared/loadding/loadding.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { HttpClientModule } from '@angular/common/http';
+import { StripeService } from 'ngx-stripe';
+import { NgxStripeModule } from 'ngx-stripe';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminTemplateComponent,
     HeaderComponent,
     FooterComponent,
-    AdminComponent,
     ClientComponent,
-    
+    // UserComponent,
+    LoaddingComponent
+
   ],
 
-  imports: [BrowserModule, AppRoutingModule, ClientRoutingModule, AdminRoutingModule, AdminModule,ClientModule,SwiperModule ], //, ClientModule
-  providers: [],
+  imports: [BrowserModule,  HttpClientModule, AppRoutingModule, ClientRoutingModule,MatFormFieldModule,MatInputModule,
+    ClientModule, SwiperModule, UserRoutingModule, BrowserAnimationsModule, MatProgressSpinnerModule,MatDatepickerModule,
+    MatDialogModule,
+    NgxStripeModule.forRoot('pk_test_51KxEc0JsyzcmxeMthvDJvy8lLHbDXIU3uggTgPC4oXvUDwL1DNt7srJwYKzzJyG7NLDv9MjprFy7DZPgoHxieMaS00tFsI8FNI'),
+
+  ], //, ClientModule
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

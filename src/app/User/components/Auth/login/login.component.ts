@@ -20,9 +20,12 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.loginForm.value).subscribe({
       next: (data) => {
         // this.auth.setToken(data.data.accessToken);
-          localStorage.setItem('token', data.data.accessToken);
-                this.router.navigate([''])
-            },
+        localStorage.setItem('token', data.data.accessToken);
+        this.router.navigate([''])
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      },
       error: (err) => {
         console.log('err', err);
       }

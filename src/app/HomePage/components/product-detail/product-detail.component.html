@@ -1,4 +1,4 @@
-<section class="productDetail" >
+<section class="productDetail">
   <div class="container">
     <div class="productDetail__wrapper">
       <div class="productDetail__wrapper-breadcrumbs">
@@ -12,28 +12,29 @@
           <a href="/">{{productDetail.name}}</a>
         </div>
       </div>
+
       <div class="productDetail__wrapper-content">
+
         <div class="productDetail__wrapper-content--left">
+
           <div class="productDetail__wrapper-content--box">
-            <div class="box__content">
+            <div *ngIf="isLoading" class="loading">
+              <app-loadding></app-loadding>
+            </div>
+            <div class="box__content" *ngIf="!isLoading">
               <div class="box__content-left">
                 <div class="box__content-left--img">
                   <div class="img__box">
                     <div class="img__content">
 
 
-                      <img
-                        [src]="productDetail.galleries[index].url"
-                        alt="">
+                      <img [src]="imageUrl" alt="">
                     </div>
                   </div>
                   <div class="img__library">
                     <div class="img__library-content " *ngFor="let image of productDetail.galleries; index as i">
-                      <div class="img__library-content--item" [class.active]="index==i">
-                        <img
-                          [src]="image.url"
-                          [alt]="image.label"
-                          (mouseover)="changeImage(i)">
+                      <div class="img__library-content--item" [class.active]="index==i" *ngIf="image">
+                        <img [src]="image.url" [alt]="image.label" (mouseover)="changeImage(image.url, i)">
 
                       </div>
                     </div>
@@ -63,7 +64,7 @@
                   <div class="content__trademark">
                     Brand
                     <a class="content__trademark-link" href="/">
-                      <span style="color: rgb(20, 53, 195)">{{productDetail.category.name}}</span>
+                      <span style="color: rgb(20, 53, 195)">{{productDetail?.category?.name}}</span>
                     </a>
                     <span class="content__trademark-line"></span>
                     SKU: {{productDetail.sku}}
@@ -93,15 +94,15 @@
                   <div class="line"></div>
                 </div>
                 <div class="content__title-discount">
-                Choose one of the following promotions
+                  Choose one of the following promotions
                 </div>
                 <div class="content__discount ">
                   <div class="content__discount-gift">
-                    <img src="../../../../assets/img/gift-icon.svg" alt="gift-icon"/>
+                    <img src="../../../../assets/img/gift-icon.svg" alt="gift-icon" />
                   </div>
                   <div class="content__discount-box">
                     <div class="box-title">
-                       <span class="box-title-price">{{100 | currency: "AUD" : "$AUD "}}</span> off
+                      <span class="box-title-price">{{100 | currency: "AUD" : "$AUD "}}</span> off
                     </div>
                     <div class="box-expiryDay">
                       <div class="box-expiryDay-day">
@@ -114,10 +115,10 @@
                   </div>
                 </div>
                 <div class="content__button">
-                  <button class="content__button--buy">
+                  <button class="content__button--buy" >
                     BUY NOW
                   </button>
-                  <button class="content__button--add">
+                  <button class="content__button--add" (click)="addToCart()">
                     ADD TO CART
                   </button>
                 </div>
@@ -155,7 +156,7 @@
               <h4>Dịch vụ khác</h4>
               <div class="info-policy--ship">
                 <div class="ship-img">
-                  <img src="../../../../assets/img/setting-icon.svg" alt=""/>
+                  <img src="../../../../assets/img/setting-icon.svg" alt="" />
                 </div>
                 <div class="ship-text">Repair of the same price $6AUD </div>
               </div>

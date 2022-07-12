@@ -4,11 +4,16 @@
       <div class="product__title">
         <h5>Product</h5>
       </div>
-      <div class="product__list">
+      <div *ngIf="isLoading" class="loading">
+        <app-loadding></app-loadding>
+      </div>
+
+      <div class="product__list" *ngIf="!isLoading">
         <div class="product__list-item"
           *ngFor="let item of products | paginate: { itemsPerPage: productItem  , currentPage: page} ">
-          <!-- [routerLink]="['/products/',item.id]" -->
-          <a (click)="getDetail(item._id)"  routerLinkActive="router-link-active"  style="text-decoration: none;color: unset; cursor: pointer; display: block">
+          <!-- [routerLink]="['/products/',item.id]"           (click)="getDetail(item._id)"-->
+          <a [routerLink]="['/products/',item._id]" routerLinkActive="router-link-active"
+            style="text-decoration: none;color: unset; cursor: pointer; display: block">
             <div class="swiper-slide--product-cart">
               <div class="swiper-slide--product-item">
                 <div class="swiper-slide--product-item-heading">
@@ -51,8 +56,10 @@
         </div>
         <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
       </div>
-
     </div>
+
+
+
     <div class="pagenation">
 
       <pagination-controls previousLabel="" nextLabel="" (pageChange)="page = $event"></pagination-controls>

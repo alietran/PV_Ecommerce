@@ -20,6 +20,7 @@ export interface Product {
   styleUrls: ['./sale-product.component.scss'],
 })
 export class SaleProductComponent implements OnInit {
+  isLoading: boolean = true;
   name: string = 'Gaming-Gear'
   products: Product[] = []
   days: number = 10
@@ -46,9 +47,11 @@ export class SaleProductComponent implements OnInit {
   //   })
   // }
   getProduct() {
+    this.isLoading = true;
     this.productService.getAllProduct().subscribe((data: any) => {
       console.log('1224', data.data)
       this.products = data.data
+      this.isLoading = false 
     })
   }
 

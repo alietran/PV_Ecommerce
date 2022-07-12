@@ -1,0 +1,59 @@
+
+
+<section class="signup__background">
+
+<!-- [formGroup]="userInfoForm" -->
+  <form id="signupForm" class="signup__form" action="" method="post" (ngSubmit)="getUserInfo()" [formGroup]="userInfoForm"  >
+    <!-- <img class="signup__form__logo" src="./public/img/book.png" alt="logo"> -->
+    <h1 class="signup__form__title">User Information <br></h1>
+
+    <div class="signup_wrapper">
+      <div class="signup__form__input mr-2">
+        <label for="firstName">First Name </label>
+        <input  id="firstName" type="text"  name="firstName" formControlName="firstName" >
+      </div>
+      <div class="signup__form__input">
+        <label for="lastName">Last Name</label>
+        <input  id="lastName" type="text"  name="lastName" formControlName="lastName">
+      </div>
+    </div>
+    <div class="signup__form__input">
+      <label for="email">Email </label>
+      <input  id="email" type="email" name="email" formControlName="email">
+
+    </div>
+
+    <div class="signup__form__input">
+      <label for="phone">Phone </label>
+      <input  id="phone" type="text"  name="phone" formControlName="phone">
+
+
+    </div>
+
+    <div class="signup_wrapper ">
+      <div class="signup__form__input form-group">
+        <label for="dob">Date Of Birth</label>
+        <input formControlName="dob" type="date" name="dob">
+      </div>
+
+
+
+      <div class="signup__form__input justify-content-center">
+        <label for="gender">Gender </label>
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+
+          <mat-radio-button  value="male"  color="primary" name="gender" >Male</mat-radio-button>
+          <mat-radio-button  value="female"  color="primary"  name="gender" >Female</mat-radio-button>
+          <mat-radio-button  value="other"   color="primary" name="gender" >Other</mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+
+    </div>
+
+
+    <input type="submit" name="btn-login" class="btn btn--primary" value="Update" style="padding:13px 0">
+    <!-- [disabled]="!registerForm.valid"> -->
+
+  </form>
+</section>

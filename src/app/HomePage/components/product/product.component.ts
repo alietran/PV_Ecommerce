@@ -9,6 +9,7 @@ import { Product } from '../sale-product/sale-product.component';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+   isLoading: boolean = true;
   products: Product[] = [];
   @Input() name: string = '';
   @Input() price: number = 500;
@@ -22,13 +23,15 @@ export class ProductComponent implements OnInit {
     this.getProduct()
   }
   getProduct() {
+    this.isLoading = true;
     this.productService.getAllProduct().subscribe((data: any) => {
       console.log('products', data.data)
       this.products = data.data
+      this.isLoading = false;
     })
   }
   getDetail(id: number){
-    //  this.router.navigateByUrl(`/products/${id}`);
+
 
      this.router.navigate(['/products/',id]);
   }

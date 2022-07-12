@@ -1,178 +1,101 @@
-<section class="productDetail">
+<section class="cart">
   <div class="container">
-    <div class="productDetail__wrapper">
-      <div class="productDetail__wrapper-breadcrumbs">
-        <div class="breadcrumbs-icon">
-          <a class="breadcrumbs-icon--link" href="/">
-            <img src="../../../../assets/img/home-icon.svg" alt="">
-          </a>
-          <span class="css-rhmj3t">&gt;</span>
-        </div>
-        <div class="breadcrumbs-name">
-          <a href="/"></a>
-        </div>
-      </div>
-      <div class="productDetail__wrapper-content">
-        <div class="productDetail__wrapper-content--left">
-          <div class="productDetail__wrapper-content--box">
-            <div class="box__content">
-              <div class="box__content-left">
-                <div class="box__content-left--img">
-                  <div class="img__box">
-                    <div class="img__content">
-
-
-                      <img [src]="" alt="">
+    <div class="cart__wrapper">
+      <div class="cart__wrapper-content">
+        <div class="cart__wrapper-content--main">
+          <div class="cart__wrapper-content-left">
+            <div class="cart__wrapper-content--box">
+              <div class="box__content">
+                <h4 style="font-weight: 500;">Delivery information</h4>
+                <div class="address">
+                  <div class="address__detail" *ngFor="let item of allAddress">
+                    <p class="address__detail-name">{{item.fullName}}</p>
+                    <p>{{item.address + ", " + item.ward + ", " + item.district + ", " + item.city}}</p>
+                    <p>{{item.phone}}</p>
+                    <div class="border__checked"></div>
+                    <span class="checked">✓</span>
+                  </div>
+                  <div class="address__detail" (click)="openDialog()">
+                    <div class="address__detail-add" >
+                      <i class="fa-solid fa-plus"></i>
+                      <p>Add address</p>
                     </div>
                   </div>
-                  <div class="img__library">
-                    <!-- <div class="img__library-content " *ngFor="let image of productDetail.galleries; index as i">
-                      <div class="img__library-content--item" [class.active]="index==i">
-                        <img [src]="image.url" [alt]="image.label" (mouseover)="changeImage(image.url, i)">
 
-                      </div> -->
-                  </div>
-                  <div class="img__library-content">
-                    <div class="img__library-content--item">
-                      <img
-                        src="https://lh3.googleusercontent.com/0AOFKAm5yoAfIXGasQMNJ5IVCjnR0vUVUolU48IMNAXTtFjTh92V4J9fVg0SeHEVvbHFB2rluI-BTkuiYpn1=rw"
-                        alt="">
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <div class="box__content-left--line">
-                <div class="line"></div>
-              </div>
-              <!-- <div class="box__content-left--text">
-                  <p>
-                    - Kiểu kết nối: Có dây
-                    <br>
-                    - Cảm biến: ATG4090
-                  </p>
-                </div> -->
-            </div>
-            <div class="box__content-right">
-              <div class="content__title">
-                <!-- <h1>{{productDetail.name}}</h1> -->
-                <div class="content__trademark">
-                  Brand
-                  <a class="content__trademark-link" href="/">
-                    <!-- <span style="color: rgb(20, 53, 195)">{{productDetail.category.name}}</span> -->
-                  </a>
-                  <span class="content__trademark-line"></span>
-                  <!-- SKU: {{productDetail.sku}} -->
-                </div>
-              </div>
-              <div class="content__color">
-                <div class="content__color--box">
-                  <div class="content__color--box-title">
-                    Color: Black
-                  </div>
-                  <div class="content__color--box-color">
-                    <div class="box-color--content active">Black</div>
-                    <div class="box-color--content">Pink</div>
-                    <div class="box-color--content">White</div>
-                  </div>
-                </div>
-              </div>
-              <div class="content__price">
-                <!-- <div class="content__price--title">{{productDetail.price | currency: "AUD" : "$AUD "}} -->
-              </div>
-              <div class="content__price--discount">
-                <div class="discount-text">{{2000 | currency: "AUD" : "$AUD "}}
-                </div>
-              </div>
-            </div>
-            <div class="content__line">
-              <div class="line"></div>
-            </div>
-            <div class="content__title-discount">
-              Choose one of the following promotions
-            </div>
-            <div class="content__discount ">
-              <div class="content__discount-gift">
-                <img src="../../../../assets/img/gift-icon.svg" alt="gift-icon" />
-              </div>
-              <div class="content__discount-box">
-                <div class="box-title">
-                  <!-- <span class="box-title-price">{{100 | currency: "AUD" : "$AUD "}}</span> off -->
-                </div>
-                <div class="box-expiryDay">
-                  <div class="box-expiryDay-day">
-                    Expiry Date: 27/7/2022
-                  </div>
-                  <div class="box-expiryDay-apply">
-                    Apply
+                <div class="delivery__info">
+                  <h4 style="font-weight: 500;">Delivery Method</h4>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                      Standard delivery
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="content__button">
-              <button class="content__button--buy">
-                BUY NOW
-              </button>
-              <button class="content__button--add">
-                ADD TO CART
-              </button>
+          </div>
+          <div class="cart__wrapper-content-left">
+            <div class="cart__wrapper-content--box">
+              <div class="box__content">
+
+                <div class="delivery__info">
+                  <h4 style="font-weight: 500;">Payment Method</h4>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                      Payment via Stripe
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="content__line">
-              <div class="line"></div>
+          </div>
+        </div>
+        <div class="cart__wrapper-content--right">
+          <div class="cart__wrapper-content--info">
+            <h4>Order Info</h4>
+            <div class="info-voucher" *ngFor="let item of cartList">
+              <div class="info-text"><img [src]="item.image" alt="" style="width: 80px;height: 80px;"></div>
+              <div class="info-product">
+                <p>{{item.name}}</p>
+                <p>Quantity: {{item.quantity}}</p>
+                <p style="font-weight: 500">{{item.price | currency: "AUD" : "$AUD "}}</p>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="cart__wrapper-content--payment">
+            <div class="cart__wrapper-content--info">
+              <h4>Payment</h4>
+              <div class="info-payment">
+                <table class="payment-tab">
+                  <tbody>
+                    <tr>
+                      <td>Provisional </td>
+                      <td><span>{{getTotalPrice() | currency: "AUD" : "$AUD "}}</span></td>
+                    </tr>
+                    <tr>
+                      <td>Transport fee </td>
+                      <td><span>FREE</span></td>
+                    </tr>
+                    <tr>
+                      <td>Total </td>
+                      <td><span style="color:red;font-size:18px;font-weight: 500;">{{getTotalPrice() | currency: "AUD" :
+                          "$AUD "}}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="VAT">(VAT included)</div>
+              </div>
+              <button (click)="openCheckout()"
+                class="continue">CHECKOUT</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="productDetail__wrapper-content--right">
-      <div class="productDetail__wrapper-content--info">
-        <div class="info-policy">
-          <h4>Sales policy</h4>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../../../../assets/img/struck-icon.svg" alt="">
-            </div>
-            <div class="ship-text">Free delivery for orders from $50AUD </div>
-          </div>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../../../../assets/img/shield-icon.svg" alt="">
-            </div>
-            <div class="ship-text">100% genuine guarantee</div>
-          </div>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../../../../assets/img/change-icon .svg" alt="">
-            </div>
-            <div class="ship-text">Return within 10 days</div>
-          </div>
-        </div>
-        <div class="info-service">
-          <h4>Dịch vụ khác</h4>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../../../../assets/img/setting-icon.svg" alt="" />
-            </div>
-            <div class="ship-text">Repair of the same price $6AUD </div>
-          </div>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../ ../../../../../assets/img/computer-icon.svg" alt="">
-            </div>
-            <div class="ship-text">Computer and laptop cleaning.</div>
-          </div>
-          <div class="info-policy--ship">
-            <div class="ship-img">
-              <img src="../../../../assets/img/shield-icon.svg" alt="">
-            </div>
-            <div class="ship-text">Home warranty.</div>
-          </div>
-        </div>
-        <a style=" margin-left: 2rem; color:#1435c3" href="/">See details</a>
-      </div>
+
     </div>
   </div>
-
-
-
-
 </section>

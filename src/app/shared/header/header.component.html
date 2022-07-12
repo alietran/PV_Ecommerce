@@ -40,67 +40,137 @@
   </div>
 
 </header>
-  <div class="header__navigationBar">
-    <div class="container">
-      <div class="header__navigationBar-content">
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <div class="header__navigationBar-logo">
-            <a href="">
-              <img src="https://phongvu.vn/phongvu/logo-full.svg" alt="">
-            </a>
-          </div>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px;flex:auto;">
-          <div class="header__navigationBar-search">
-            <input type="text" placeholder="Enter keywords...">
-            <button>
-              <img src="./../../assets/img/search.svg" alt="">
-            </button>
-          </div>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <a>
-            <div class="header__navigationBar-voucher">
-              <img src="./../../assets/img/voucher.svg" alt="">
-              <span class="title">Promotion</span>
-            </div>
-          </a>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <a>
-            <div class="header__navigationBar-voucher">
-              <img src="./../../assets/img/order.svg" alt="">
-              <span class="title">Order</span>
-            </div>
-          </a>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <a>
-            <div class="header__navigationBar-voucher">
-              <img src="./../../assets/img/avatar_user.svg" alt="">
-              <span class="title">Login</span>
-            </div>
-          </a>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <a>
-            <div class="header__navigationBar-voucher">
-              <img src="./../../assets/img/notify.svg" alt="">
-              <span class="title">Notify</span>
-            </div>
-          </a>
-        </div>
-        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
-          <a>
-            <div class="header__navigationBar-voucher">
-              <img src="./../../assets/img/cart.svg" alt="">
-              <span class="title">Cart</span>
-              <div class="number_cart">
-                <div class="cart_point">1</div>
-              </div>
-            </div>
+<div class="header__navigationBar">
+  <div class="container">
+    <div class="header__navigationBar-content">
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+        <div class="header__navigationBar-logo">
+          <a href="">
+            <img src="https://phongvu.vn/phongvu/logo-full.svg" alt="">
           </a>
         </div>
       </div>
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px;flex:auto;">
+        <div class="header__navigationBar-search">
+          <input type="text" placeholder="Enter keywords...">
+          <button>
+            <img src="./../../assets/img/search.svg" alt="">
+          </button>
+        </div>
+      </div>
+
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+        <a>
+          <div class="header__navigationBar-voucher">
+            <img class="circle" src="./../../assets/img/voucher.svg" alt="">
+            <span class="title">Promotion</span>
+          </div>
+        </a>
+      </div>
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+        <a>
+          <div class="header__navigationBar-voucher">
+            <img class="circle" src="./../../assets/img/order.svg" alt="">
+            <span class="title">Order</span>
+          </div>
+        </a>
+      </div>
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px" *ngIf="!token;else Login">
+        <a [routerLink]="['/login']">
+          <div class="header__navigationBar-voucher">
+            <img class="circle" src="./../../assets/img/avatar_user.svg" alt="">
+            <span class="title">Login</span>
+            <!-- <span class="title">Login</span> -->
+          </div>
+        </a>
+      </div>
+      <ng-template class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px" #Login>
+        <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+          <a>
+            <div class="header__navigationBar-voucher">
+              <div style="display: flex;
+    flex-direction: column;
+    gap: 0.5rem;align-items: center;">
+                <img class="circle" src="./../../assets/img/avatar_user.svg" alt="">
+                <span class="title">{{userInfo['firstName']}}</span>
+              </div>
+              <div class="header__navigationBar-option">
+                <a routerLink="userInfo">
+                  <div class="header__navigationBar-option-info">
+                    <img src="./../../assets/img/avatar_user.svg" alt="">
+                    <p>User Information</p>
+                  </div>
+                </a>
+                <a>
+                  <div>
+                    <img src="./../../assets/img/address.svg" alt="">
+                    <p>Address List</p>
+                  </div>
+                </a>
+                <button class="logout" (click)="logout()">Logout</button>
+              </div>
+
+            </div>
+          </a>
+        </div>
+      </ng-template>
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+        <a>
+          <div class="header__navigationBar-voucher">
+            <img class="circle" src="./../../assets/img/notify.svg" alt="">
+            <span class="title">Notify</span>
+            <div class="header__navigationBar-noti">
+              <div class="noti-img"><img src="../../../assets/img/noti.png" alt=""></div>
+              <p class="noti-title">You don't have new notify</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="header__navigationBar-wrapper" style="padding-left:8px;padding-right:8px">
+        <a [routerLink]="['cart']" routerLinkActive="router-link-active">
+          <div class="header__navigationBar-voucher">
+            <img class="circle" src="./../../assets/img/cart.svg" alt="">
+            <span class="title">Cart</span>
+            <!-- <div class="number_cart">
+              <div class="cart_point">1</div>
+            </div> -->
+            <div *ngIf="!isHasItemCart; else emtyCart">
+              <div class="header__navigationBar-cart">
+                <div class="header__navigationBar-cart-wrapper">
+                  <div class="header__navigationBar-content">
+                    <div class="header__navigationBar-obj">
+                      <div class="cart-img"><img src="../../../assets/img/box.png" alt=""></div>
+                      <p class="cart-title">The cart has no products</p>
+                      <button class="btn-cart">Buy now</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <ng-template #emtyCart>
+              <div class="header__navigationBar-cart ">
+                <div class="header__navigationBar-cart-wrapper">
+                  <div class="header__navigationBar-content itemCart" *ngFor="let item of cartList">
+                    <div class="header__navigationBar-obj">
+                      <img [src]="item.image" alt="" style="width: 80px;height: 80px;">
+                    </div>
+                    <div class="info-product">
+                      <p>{{item.name}}</p>
+                      <p>Quantity: {{item.quantity}}</p>
+                      <p style="font-weight: 500">{{item.price | currency: "AUD" : "$AUD "}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+
+          </div>
+        </a>
+      </div>
     </div>
   </div>
+</div>

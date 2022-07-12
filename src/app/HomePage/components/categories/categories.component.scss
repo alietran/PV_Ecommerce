@@ -11,8 +11,18 @@
       border-radius: 8px;
       background-size: cover;
       background-position: center top;
-
+      .loading {
+        display: flex;
+        margin-top: 100px ;
+        // align-items: center;
+        justify-content: center;
+        // margin: 0 auto;
+        // margin-left: 50px;
+      }
       .productCate__title {
+        h5 {
+          font-size: 20px;
+        }
         color: white;
         border-bottom: 1px solid rgba(255, 255, 255, 0.463);
 

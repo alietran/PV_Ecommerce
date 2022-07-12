@@ -10,6 +10,7 @@ export class Product {
   quantity: number
   warranty: number
   slug: string
+  image: string
   category: Category
     constructor(){
 
