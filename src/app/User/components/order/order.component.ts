@@ -21,11 +21,12 @@ export class OrderComponent implements OnInit {
   userId: string = ''
   allAddress = []
   addressNew = []
-  addressDefault = {}
+  addressDefault :any
   paymentMethod: any
   success: boolean = false
   minimum: boolean = false;
   failure: boolean = false
+  addressIsChoose = 0
 
   constructor(private addressService: AddressService,
     private router: Router,
@@ -37,6 +38,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartList = JSON.parse(localStorage.getItem("cartList"));
+
     this.getAllAddress()
 
   }
@@ -79,27 +81,70 @@ export class OrderComponent implements OnInit {
     this.addressService.getAddresses().subscribe((data: any) => {
       console.log('addresses 23234', data)
       this.allAddress = data.data
+      this.addressDefault = data.data[0]
       this.getAddressHere()
       console.log('addresses 12425', this.allAddress)
+      console.log(' this.addressDefault', this.addressDefault)
 
     })
   }
   openDialog() {
-    this.dialog.open(AddressComponent, {
+    let dialogRef = this.dialog.open(AddressComponent, {
       height: '740px',
       width: '500px',
 
     });
-
-    // console.log("1231")
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result)
+    })
   }
   openCheckout(){
-    this.dialog.open(StripeComponent, {
+   let dialogRef = this.dialog.open(StripeComponent, {
       height: '440px',
       width: '500px',
 
     });
+
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log("result",result)
+    })
   }
+  openMedthod(){
+
+  }
+
+  changeAddressChosed(value: number){
+    this.addressIsChoose = value
+  }
+
+  // changeAddress(idAddress: string){
+  //  this.addressDefault = idAddress
+
+  // }
+
+  // changeAddress(idAddress: string,data: any) {
+  //   console.log("idAddress", idAddress)
+  //   console.log("all add", this.allAddress)
+  //   let setDefault = this.allAddress.filter((item)=>{
+  //     // console.log("item", item['_id'] === idAddress == true)
+  //     return item['_id'] === idAddress
+  //   })
+  //   if(setDefault){
+  //     setDefault[0].isDefault = true;
+
+  //   }
+  //   console.log(" setDefault[0]", setDefault[0])
+  //   //   let setDefault['isDefault'] =true
+  //   this.addressService.updateAddress(idAddress, setDefault[0]).subscribe((data : any)=> {
+  //     console.log("data default", data)
+  //   })
+  //   // setDefault['isDefault'] === true
+  //   // console.log("setDefault", setDefault)
+  //   // this.addressService.updateAddress(idAddress, this.editUserForm.value).subscribe(data => {
+  //   // })
+
+  // }
+
   getAddressHere() {
     // this.isLoading = true
     console.log("this.allAddress", this.allAddress)
@@ -126,7 +171,7 @@ export class OrderComponent implements OnInit {
     // }
     // console.log(" this.addressNew", this.addressNew.isDefault === true)
     // this.addressFirst = this.addressNew['isDefault'] === true
-    console.log(" this.addressFirst", this.addressDefault)
+    // console.log(" this.addressFirst", this.addressDefault)
     // this.addressService.getAddressDetail('62c01126977285dbb4cb1133').subscribe((data: any) => {
     //   console.log("133")
     //   console.log('userid addess', data.data)
@@ -135,9 +180,6 @@ export class OrderComponent implements OnInit {
     // })
   }
 
-  // getPaymentMethod() {
-  //   this.paymentMethodService.getPayment().subscribe((data) => { console.log("data",data)})
-  // }
 
   createOrder() {
     this.cartList = JSON.parse(localStorage.getItem("cartList"));
@@ -156,67 +198,6 @@ export class OrderComponent implements OnInit {
 
     );
   }
-  // pay() {
-  //   let amount: any
-  //   const handler = (<any>window).StripeCheckout.configure({
-  //     key: 'pk_test_51LIjmdC4I0Tc2o2rBMPi7Ocw9TfRYsqk21uVAimxPvGSXH1cEYmMrm6h6pei2C7atk8Jn5ak5jpIArUgmRB59Nea00o1AMP8Ml',
-  //     locale: 'auto',
-  //     token: function (token: any) {
-  //       // You can access the token ID with `token.id`.
-  //       // Get the token ID to your server-side code for use.
-  //       console.log(token)
-  //       alert('Token Created!!');
-  //       paymentstripe(token)
 
-
-  //     }
-  //   });
-
-  //   const paymentstripe = (stripeToken: any) => {
-  //     this.checkout.makePayment(stripeToken).subscribe((data: any) => {
-  //       console.log(data);
-  //       if (data.data === "success") {
-  //         this.success = true
-  //         this.router.navigate([''])
-  //         localStorage.setItem('cartList', '');
-
-  //       }
-  //       else {
-  //         this.failure = true
-  //         alert("Checkout Fail")
-  //       }
-  //     });
-  //   };
-  //   handler.open({
-  //     name: 'Phong Vu',
-  //     description: '2 widgets',
-  //     amount: amount * 100
-  //   });
-  // }
-
-
-  // loadStripe() {
-
-  //   if (!window.document.getElementById('stripe-script')) {
-  //     var s = window.document.createElement("script");
-  //     s.id = "stripe-script";
-  //     s.type = "text/javascript";
-  //     s.src = "https://checkout.stripe.com/checkout.js";
-  //     // s.onload = () => {
-  //     //   this.handler = (<any>window).StripeCheckout.configure({
-  //     //     key: 'pk_test_51LIjmdC4I0Tc2o2rBMPi7Ocw9TfRYsqk21uVAimxPvGSXH1cEYmMrm6h6pei2C7atk8Jn5ak5jpIArUgmRB59Nea00o1AMP8Ml',
-  //     //     locale: 'auto',
-  //     //     token: function (token: any) {
-  //     //       // You can access the token ID with `token.id`.
-  //     //       // Get the token ID to your server-side code for use.
-  //     //       console.log(token)
-  //     //       alert('Payment Success!!');
-  //     //     }
-  //     //   });
-  //     // }
-
-  //     window.document.body.appendChild(s);
-  //   }
-  // }
 
 }

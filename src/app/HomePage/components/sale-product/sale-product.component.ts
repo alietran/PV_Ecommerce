@@ -51,12 +51,12 @@ export class SaleProductComponent implements OnInit {
     this.productService.getAllProduct().subscribe((data: any) => {
       console.log('1224', data.data)
       this.products = data.data
-      this.isLoading = false 
+      this.isLoading = false
     })
   }
 
   coutDownTimer(){
-    var futureDate = new Date("July 15, 2022").getTime();
+    var futureDate = new Date("July 17, 2022").getTime();
     var today = new Date().getTime();
     var distance = futureDate - today;
     this.days = Math.floor(distance / (1000 * 60 * 60 *24));

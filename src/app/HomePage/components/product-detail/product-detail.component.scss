@@ -228,6 +228,7 @@
                 margin-top: 1rem;
                 margin-bottom: 1rem;
                 &--box {
+                   display: flex;
                   margin-top: 8px;
                   &-title {
                     text-transform: uppercase;
@@ -244,6 +245,7 @@
                     flex-flow: wrap;
                     max-width: calc(100% - 64px);
                     margin-top: 8px;
+
                     .box-color--content {
                       border: 1px solid rgb(224, 224, 224);
                       position: relative;

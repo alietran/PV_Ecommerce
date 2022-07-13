@@ -144,11 +144,9 @@
                       <p class="cart-title">The cart has no products</p>
                       <button class="btn-cart">Buy now</button>
                     </div>
-
                   </div>
                 </div>
               </div>
-
             </div>
             <ng-template #emtyCart>
               <div class="header__navigationBar-cart ">
@@ -163,6 +161,7 @@
                       <p style="font-weight: 500">{{item.price | currency: "AUD" : "$AUD "}}</p>
                     </div>
                   </div>
+                  <button [routerLink]="['/cart']" routerLinkActive="router-link-active"  mat-raised-button color="primary" class="viewCart">View Cart</button>
                 </div>
               </div>
             </ng-template>

@@ -274,6 +274,18 @@
               box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px 0px;
               width: 384px;
               max-height: 400px;
+              .viewCart {
+                margin-top: 10px;
+                padding: 5px 0;
+                border-radius: 5px;
+                width: 100%;
+                color: white;
+                background: #1435c3;
+                border: none;
+                &:hover {
+                  opacity: 0.8;
+                }
+              }
               .header__navigationBar-content {
                 display: flex;
                 height: 357px; //auto
@@ -330,7 +342,6 @@
                   width: 60px;
                   height: 60px;
                   padding: 0;
-                 
                 }
                 .info-product {
                   line-height: 1.2;

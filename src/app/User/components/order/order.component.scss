@@ -141,19 +141,20 @@
                 position: relative;
                 overflow: hidden;
                 cursor: pointer;
-                height: 100%;
+                height: 120px;
+
                 &-add {
                   text-align: center;
                   vertical-align: center;
                   position: absolute;
                   top: 40px;
                   right: 160px;
-                  i{
+                  i {
                     font-size: 24px;
                     color: #999999;
                   }
-                  p{
-                     color: #999999;
+                  p {
+                    color: #999999;
                   }
                 }
                 .border__checked {
@@ -184,6 +185,8 @@
                   font-size: 0.875rem;
                 }
               }
+
+
             }
             .center {
               display: flex;
@@ -222,6 +225,18 @@
               &-product {
                 font-size: 15px;
                 margin-left: 15px;
+              }
+            }
+            .delivery__info{
+              .form-check{
+
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 10px;
+
+              }
+              .payment{
+                padding: 0;
               }
             }
           }

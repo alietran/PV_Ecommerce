@@ -27,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StripeService } from 'ngx-stripe';
 // import { Stripe;Service } from './services/stripe.service'
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '../shared/shared.moulde';
 // import { LoaddingComponent } from '../shared/loadding/loadding.component';
 // import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';import {MatButtonModule} from '@angular/material/button';
 @NgModule({
@@ -44,15 +45,14 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [MatIconModule,
     BrowserAnimationsModule,
     RouterModule, BrowserModule,
-    CommonModule,FormsModule,
+    CommonModule, FormsModule, MatDialogModule,
     AuthModule,HttpClientModule,
     MatButtonModule,
-
     ReactiveFormsModule,
     RouterModule,
     UserRoutingModule,MatRadioModule,
     MatInputModule,MatDatepickerModule,MatNativeDateModule,MatFormFieldModule,
-    NgxStripeModule
+    NgxStripeModule,SharedModule
   ],
 
   exports: []

@@ -11,7 +11,7 @@ import { SwiperModule } from 'swiper/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRoutingModule } from './User/user-routing.module';
 // import { UserComponent } from './User/user.component';
-import { LoaddingComponent } from './shared/loadding/loadding.component';
+// import { LoaddingComponent } from './shared/loadding/loadding.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StripeService } from 'ngx-stripe';
 import { NgxStripeModule } from 'ngx-stripe';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     FooterComponent,
     ClientComponent,
     // UserComponent,
-    LoaddingComponent
+    // LoaddingComponent
 
   ],
 
   imports: [BrowserModule,  HttpClientModule, AppRoutingModule, ClientRoutingModule,MatFormFieldModule,MatInputModule,
     ClientModule, SwiperModule, UserRoutingModule, BrowserAnimationsModule, MatProgressSpinnerModule,MatDatepickerModule,
-    MatDialogModule,
+    MatDialogModule, ToastrModule.forRoot({
+      timeOut: 1000,
+      progressBar:true,
+    }),
     NgxStripeModule.forRoot('pk_test_51KxEc0JsyzcmxeMthvDJvy8lLHbDXIU3uggTgPC4oXvUDwL1DNt7srJwYKzzJyG7NLDv9MjprFy7DZPgoHxieMaS00tFsI8FNI'),
 
   ], //, ClientModule

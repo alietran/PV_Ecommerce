@@ -18,29 +18,37 @@ export class AddressService {
 
   }
 
-   getAddresses ():Observable<any>{
-     var addresses = this.enviromentService.url + '/users/me/addresses';
+  getAddresses(): Observable<any> {
+    var addresses = this.enviromentService.url + '/users/me/addresses';
     return this.http.get<any>(addresses)
-   }
+  }
 
 
 
 
-   getAddressDetail (addressId:string):Observable<any>{
-      // var api = this.enviromentService.url + '/users/me/addresses/:addressId';
-    return this.http.get<any>( this.enviromentService.url + '/users/me/addresses/'+ addressId).pipe(map(res => {
+  getAddressDetail(addressId: string): Observable<any> {
+    // var api = this.enviromentService.url + '/users/me/addresses/:addressId';
+    return this.http.get<any>(this.enviromentService.url + '/users/me/addresses/' + addressId).pipe(map(res => {
       console.log("user info", res)
     }
     ))
 
 
   }
-  getAddressUser() {
-   const user =  this.userService.getUserInfo().pipe(map(res => {
+  getAddressUser(){
+    const user = this.userService.getUserInfo().pipe(map(res => {
       console.log("user đây", res)
     }
     ))
 
+  }
+  //  editUser( id:number,data:any):Observable<any>{
+  //   return this.http.put<any>(this.api+"/"+id,data)
+  // }
+
+  updateAddress(addressId: string, data: {}): Observable<any>{
+    let api = this.enviromentService.url + '/users/me/addresses/'+addressId
+    return this.http.put(api,data )
   }
 }
 

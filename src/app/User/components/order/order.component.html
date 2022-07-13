@@ -8,23 +8,28 @@
               <div class="box__content">
                 <h4 style="font-weight: 500;">Delivery information</h4>
                 <div class="address">
-                  <div class="address__detail" *ngFor="let item of allAddress">
+                  <!-- (click)="changeAddress(item._id) -->
+                  <div class="address__detail " *ngFor="let item of allAddress; index as i" (click)="changeAddressChosed(i)" >
                     <p class="address__detail-name">{{item.fullName}}</p>
                     <p>{{item.address + ", " + item.ward + ", " + item.district + ", " + item.city}}</p>
                     <p>{{item.phone}}</p>
-                    <div class="border__checked"></div>
-                    <span class="checked">✓</span>
+                    <div [style.display]="addressIsChoose === i ? '' :'none'">
+                        <div class="border__checked"></div>
+                        <span class="checked">✓</span>
+                    </div>
+
                   </div>
                   <div class="address__detail" (click)="openDialog()">
-                    <div class="address__detail-add" >
+                    <div class="address__detail-add">
                       <i class="fa-solid fa-plus"></i>
                       <p>Add address</p>
                     </div>
                   </div>
 
                 </div>
+
                 <div class="delivery__info">
-                  <h4 style="font-weight: 500;">Delivery Method</h4>
+                  <h4 style="font-weight: 500;padding: 10px 0 0 0">Delivery Method</h4>
                   <div class="form-check">
                     <label class="form-check-label">
                       <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
@@ -41,11 +46,23 @@
 
                 <div class="delivery__info">
                   <h4 style="font-weight: 500;">Payment Method</h4>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-                      Payment via Stripe
-                    </label>
+                  <div class="form-check payment">
+
+                      <div class="address__detail">
+                        <p style="font-weight: 600;">Payment via Stripe</p>
+                        <p>Payment via Internet Banking, Visa, Master, JCB, VNPAY-QR</p>
+                        <div class="border__checked"></div>
+                        <span class="checked">✓</span>
+                      </div>
+                      <div class="address__detail" (click)="openMedthod()">
+                        <div class="address__detail-add">
+                          <i class="fa-solid fa-plus"></i>
+                          <p>Add Method</p>
+                        </div>
+                      </div>
+                      <!-- <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                      Payment via Stripe -->
+                    <!-- </label> -->
                   </div>
                 </div>
               </div>
@@ -89,8 +106,7 @@
                 </table>
                 <div class="VAT">(VAT included)</div>
               </div>
-              <button (click)="openCheckout()"
-                class="continue">CHECKOUT</button>
+              <button (click)="openCheckout()" class="continue">CHECKOUT</button>
             </div>
           </div>
         </div>

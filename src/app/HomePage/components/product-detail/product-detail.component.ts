@@ -2,6 +2,8 @@ import { Product } from './../../Model/Product.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { HttpBackend } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 
 // export interface ProductItem {
@@ -26,12 +28,17 @@ export class ProductDetailComponent implements OnInit {
   cartList: any[] = []
   quantity: number = 1;
   isLoading: boolean = true;
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  colorProduct: string[]
+  constructor(private route: ActivatedRoute, private productService: ProductService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     // this.id = this.route.snapshot.params['id'];
     this.getInfoProduct()
-
+    this.colorProduct= [
+      "Black",
+      "Blue",
+      "Pink"
+    ]
   }
   getInfoProduct() {
     this.isLoading = true;
@@ -71,7 +78,7 @@ export class ProductDetailComponent implements OnInit {
       localStorage.setItem('cartList', JSON.stringify(this.cartList));
     }
     this.cartList = [...this.cartList]
-
+    this.toastr.success('Add product successfully', 'Success')
     localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
 }

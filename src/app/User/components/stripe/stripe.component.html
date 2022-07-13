@@ -1,13 +1,16 @@
-
-
+<div *ngIf="isLoading" class="loading">
+  <app-loadding></app-loadding>
+</div>
 <!-- <p>{{isLoading}}</p> -->
 <!-- <p>{{elementsOptions?.clientSecret}}</p> -->
-<!-- <div *ngIf="!isLoading"> -->
+<div *ngIf="!isLoading">
   <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret ">
     <ngx-stripe-payment [clientSecret]="clientSecret">
+
     </ngx-stripe-payment>
+    <button mat-raised-button color="primary" (click)="pay()" mat-dialog-close>Checkout</button>
   </ng-container>
 
-  <button mat-raised-button color="primary" (click)="pay()">Checkout</button>
 
-<!-- </div> -->
+
+</div>

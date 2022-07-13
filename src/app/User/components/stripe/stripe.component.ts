@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -33,6 +34,8 @@ export class StripeComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
+    public dialogRef: MatDialogRef<StripeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private stripeService: StripeService,
     private enviromentService: EnviromentService,
     private paymentMethodService: PaymentMethodService
@@ -62,6 +65,7 @@ export class StripeComponent implements OnInit {
       this.paymentMethodService.order().subscribe((data: any)=>{
         console.log("data", data)
       })
+      this.dialogRef.close()
       // this.getItemCart()
 
       // this.paymentMethodService.order().subscribe((data: any) => {
@@ -76,9 +80,9 @@ export class StripeComponent implements OnInit {
 
     this.paymentMethodService.createPayment().subscribe(pi => {
       console.log("first", pi.data.client_secret);
-      this.isLoading = true;
-      this.elementsOptions.clientSecret = pi.data.client_secret
 
+      this.elementsOptions.clientSecret = pi.data.client_secret
+      this.isLoading = false;
     })
     console.log("this.isLoading", this.isLoading)
   }

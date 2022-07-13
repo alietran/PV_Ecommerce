@@ -10,13 +10,18 @@ import { User } from '../Models/User.model';
 export class UserService {
  constructor(private enviromentService: EnviromentService, private http: HttpClient) { }
 
-
+ user = this.enviromentService.url + "/users/me/profile"
   getUserInfo(): Observable<any> {
-    let user = this.enviromentService.url + "/users/me/profile"
-    return this.http.get(user).pipe(map(res => {
+
+    return this.http.get(this.user).pipe(map(res => {
       console.log("res", res)
       return res;
     }))
+  }
+
+  updateUserInfo(data : any) :Observable<any> {
+
+    return this.http.put(this.user, data)
   }
 
 }

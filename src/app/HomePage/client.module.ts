@@ -33,6 +33,7 @@ import { TokenInterceptorService } from '../User/services/token-interceptor.serv
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SharedModule } from '../shared/shared.moulde';
 
 
 
@@ -60,7 +61,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    ClientRoutingModule,
+    ClientRoutingModule, SharedModule,
     MatProgressSpinnerModule,MatFormFieldModule,MatNativeDateModule,MatDatepickerModule,
 
   ],

@@ -10,6 +10,7 @@ import { AddressService } from './address.service';
 })
 export class PaymentMethodService {
   public orderInfo: any = {}
+
   constructor(private enviromentService: EnviromentService, private http: HttpClient, private addressService: AddressService) { }
   getPayment(): Observable<any> {
     let user = this.enviromentService.url + "/users/me/payment-methods"
@@ -30,31 +31,24 @@ export class PaymentMethodService {
 
 
   order() {
+
     let cartList2 = [];
+
     let cartList = JSON.parse(localStorage.getItem("cartList"));
     console.log("cartList", cartList)
     cartList.forEach(element => {
-      let product: { productId: string, quantity: number } = {productId : '', quantity: 0}
+      let product: { productId: string, quantity: number } = { productId: '', quantity: 0 }
       product.productId = element._id
       product.quantity = element.quantity
       cartList2.push(product)
     });
     this.orderInfo.items = cartList2;
     console.log("cartList2", cartList2)
-     // setTimeout(() => {
-    //   this.addressDefault = this.allAddress.filter((item) => {
-    //     // console.log("1234")
-    //     // console.log("ien", item['isDefault'] ===true)
-
-    //     return  item['isDefault'] === true
-
-    //   })
-    // }, 1000);
-    this.addressService.getAddresses().subscribe((data: any)=> {
-      
-      this.orderInfo.address = data.data[0]
-        })
-        console.log("orderInffo", this.orderInfo)
+    this.addressService.getAddresses().subscribe((data: any) => {
+      this.orderInfo.address  = data.data[0]
+    })
+    console.log("orderInffo", this.orderInfo)
+    console.log("this.orderInfo.address", this.orderInfo['address'])
     let api = this.enviromentService.url + "/orders"
     return this.http.post(api, this.orderInfo)
   }

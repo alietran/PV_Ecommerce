@@ -1,6 +1,7 @@
 import { AddressService } from './../../services/address.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-address',
@@ -20,7 +21,8 @@ export class AddressComponent implements OnInit {
     phone: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
   });
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService, public dialogRef: MatDialogRef<AddressComponent>,
+    ) { }
 
   ngOnInit(): void {
     console.log('this.addressForm', this.addressForm);
@@ -29,6 +31,7 @@ export class AddressComponent implements OnInit {
     this.addressService.createAddress(this.addressForm.value).subscribe((data: any) => {
       console.log('data address', data)
       this.addressForm.reset()
+      this.dialogRef.close()
     })
 
   }

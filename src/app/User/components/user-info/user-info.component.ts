@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
@@ -20,7 +21,7 @@ export class UserInfoComponent implements OnInit {
     dob: new FormControl(''),
     gender: new FormControl(''),
   });
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getUserInfo()
@@ -42,4 +43,10 @@ export class UserInfoComponent implements OnInit {
       });
     })}
 
+  updateUserInfo(){
+    this.userService.updateUserInfo(this.userInfoForm.value).subscribe((item)=>{
+      console.log("item info", item)
+    })
+    this.toastr.success('Update user info successfully', 'Success')
+  }
 }
