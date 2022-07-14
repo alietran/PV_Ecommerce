@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.getUserInfo();
     this.getItemCart();
 
-    console.log('cartList', this.cartList)
+    // console.log('cartList', this.cartList)
   }
 
   ngDoCheck() {
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   getUserInfo() {
     console.log('199898')
     this.userService.getUserInfo().subscribe((data: any) => {
-      console.log('header', data.data)
+      // console.log('header', data.data)
       this.userInfo = data.data
 
     })

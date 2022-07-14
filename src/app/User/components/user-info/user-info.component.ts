@@ -32,7 +32,7 @@ export class UserInfoComponent implements OnInit {
       // console.log('userInfo', data.data)
       this.userInfo = data.data
       this.gender = data.data.gender
-      console.log('userInfo 1224', data.data)
+      // console.log('userInfo 1224', data.data)
       this.userInfoForm = new FormGroup({
         firstName: new FormControl(data.data.firstName),
         lastName: new FormControl(data.data.lastName),
@@ -45,7 +45,7 @@ export class UserInfoComponent implements OnInit {
 
   updateUserInfo(){
     this.userService.updateUserInfo(this.userInfoForm.value).subscribe((item)=>{
-      console.log("item info", item)
+      // console.log("item info", item)
     })
     this.toastr.success('Update user info successfully', 'Success')
   }

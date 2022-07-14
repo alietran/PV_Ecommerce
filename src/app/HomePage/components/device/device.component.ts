@@ -16,7 +16,7 @@ export class DeviceComponent implements OnInit {
   }
   getAllCate(){
       this.categoryService.getAllCate().subscribe((data: any) => {
-      console.log('category', data.data)
+      // console.log('category', data.data)
       this.category = data.data
     })
   }

@@ -141,8 +141,8 @@
                 opacity: 1;
                 position: relative;
                 border-radius: 50%;
-                width: 40px;
-                height: 40px;
+                width: 60px;
+                height: 60px;
                 display: flex;
                 -webkit-box-pack: center;
                 justify-content: center;
@@ -150,8 +150,8 @@
                 align-items: center;
                 background-color: unset;
                 img {
-                  width: 40px;
-                  height: 40px;
+                  width: 60px;
+                  height: 60px;
                   padding: 0 12px;
                   object-fit: contain;
                 }
@@ -191,7 +191,7 @@
               align-items: end;
               display: flex;
               flex-direction: column;
-              padding-bottom: 10px;
+              padding-bottom: 18px;
             }
             &-quantity {
               display: flex;

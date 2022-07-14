@@ -14,7 +14,7 @@ export class UserService {
   getUserInfo(): Observable<any> {
 
     return this.http.get(this.user).pipe(map(res => {
-      console.log("res", res)
+      // console.log("res", res)
       return res;
     }))
   }

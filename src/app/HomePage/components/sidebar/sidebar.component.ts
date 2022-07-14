@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   constructor(private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
-    console.log("catories",this.categories)
+    // console.log("catories",this.categories)
     this.getAllCateMenu()
   }
   getAllCateMenu(){
@@ -25,7 +25,7 @@ this.categoryService.getAllCate().subscribe((data:any)=>{
   }
   showSubMenu(item:string){
 
-    console.log("item", item)
+    // console.log("item", item)
     this.index = item;
     this.hideItem = true;
   }

@@ -78,6 +78,8 @@ export class StripeComponent implements OnInit {
 
       })
       this.dialogRef.close()
+
+
       // this.addressService.getAddresses()
       // this.getItemCart()
 
@@ -92,12 +94,12 @@ export class StripeComponent implements OnInit {
     this.isLoading = true;
 
     this.paymentMethodService.createPayment().subscribe(pi => {
-      console.log("first", pi.data.client_secret);
+      // console.log("first", pi.data.client_secret);
 
       this.elementsOptions.clientSecret = pi.data.client_secret
       this.isLoading = false;
     })
-    console.log("this.isLoading", this.isLoading)
+    // console.log("this.isLoading", this.isLoading)
   }
 
 

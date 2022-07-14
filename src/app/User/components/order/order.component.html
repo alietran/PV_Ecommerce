@@ -7,7 +7,10 @@
             <div class="cart__wrapper-content--box">
               <div class="box__content">
                 <h4 style="font-weight: 500;">Delivery information</h4>
-                <div class="address">
+                <div *ngIf="isLoading" class="loading">
+                  <app-loadding></app-loadding>
+                </div>
+                <div class="address" *ngIf="!isLoading">
                   <!-- (click)="changeAddress(item._id) -->
                   <div class="address__detail " *ngFor="let item of allAddress; index as i"
                     (click)="changeAddressChosed(item._id,i)">
@@ -18,7 +21,8 @@
 
                       </div>
                       <div>
-                        <i class="fa-solid fa-trash-can" (click)="deleteAddress(item._id)" style="color: #3498DB; padding: 0 10px"></i>
+                        <i class="fa-solid fa-trash-can" (click)="deleteAddress(item._id)"
+                          style="color: #3498DB; padding: 0 10px"></i>
                       </div>
                       <!-- <img src="../../../../assets/img/icons8-trash.svg" alt="" (click)="deleteAddress(item._id)"> -->
 
@@ -60,8 +64,12 @@
 
                 <div class="delivery__info">
                   <h4 style="font-weight: 500;">Payment Method</h4>
-                  <div class="form-check payment">
+                  <div *ngIf="isLoading" class="loadingCard">
+                    <app-loadding></app-loadding>
+                  </div>
+                  <div class="form-check payment" *ngIf="!isLoading">
                     <!-- {{ cardIsChoose }} -->
+
                     <div class="address__detail" *ngFor="let item of cardList; index as i"
                       (click)="changeCardChosed(item.id,i)">
                       <img src="../../../../assets/img/credit/visa.png" alt="">
@@ -72,7 +80,7 @@
                           <span class="card__label">Card holder</span>
                           <p class="card__info">{{item.billing_details.name}}</p>
                         </div>
-                        <div class="card__holder" style="margin-left:20px" >
+                        <div class="card__holder" style="margin-left:20px">
                           <span class="card__label">Expires</span>
                           <p class="card__info">{{item.card.exp_month + " / " +item.card.exp_year}}</p>
                         </div>
@@ -144,7 +152,7 @@
               </div>
               <!-- (click)="openCheckout()" -->
               <button (click)="checkout()" class="continue"
-                [disabled]="this.paymentMethod === '' || undefined">CHECKOUT</button>
+               >CHECKOUT</button>
             </div>
           </div>
         </div>

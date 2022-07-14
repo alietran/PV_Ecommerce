@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
   getAllCateLap() {
     this.isLoading = true
     this.productService.getAllLap().subscribe((data: any) => {
-      console.log('1224', data)
+      // console.log('1224', data)
       this.laptops = data.data
       this.isLoading = false
     })

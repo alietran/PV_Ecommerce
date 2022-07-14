@@ -23,13 +23,13 @@ export class RegisterComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log('this.registerForm', this.registerForm);
+    // console.log('this.registerForm', this.registerForm);
   }
   register() {
     this.auth.register(this.registerForm.value).subscribe((res) => {
       this.registerForm.reset();
       this.router.navigate(['login'])
-      console.log(res);
+      // console.log(res);
     }, err => {
       console.log('err', err)
     }

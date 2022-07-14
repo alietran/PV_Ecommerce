@@ -119,18 +119,28 @@
             vertical-align: middle;
           }
           .box__content {
+                  width: 100%;
+            .loadingCard {
+              display: flex;
+              margin-top: 50px;
+              // align-items: center;
+              justify-content: center;
+              // margin: 0 auto;
+
+            }
+            .loading {
+              display: flex;
+              margin-top: 50px;
+              // align-items: center;
+              justify-content: center;
+              // margin: 0 auto;
+             
+            }
             .address {
               display: grid;
               gap: 10px;
               grid-template-columns: repeat(2, 1fr);
-              .loading {
-                display: flex;
-                margin-top: 100px;
-                // align-items: center;
-                justify-content: center;
-                // margin: 0 auto;
-                // margin-left: 50px;
-              }
+
               &__detail {
                 .address__option {
                   display: flex;
@@ -295,13 +305,12 @@
                   overflow: hidden;
                   cursor: pointer;
                   .address__detail-add {
-                  text-align: center;
-                  vertical-align: center;
-                  position: absolute;
-                  top: 60px;
-                  right: 160px;
-
-                }
+                    text-align: center;
+                    vertical-align: center;
+                    position: absolute;
+                    top: 60px;
+                    right: 160px;
+                  }
                 }
               }
               .payment {
@@ -328,7 +337,8 @@
             vertical-align: middle;
           }
           .box__content {
-            flex: 0 0 96%;
+
+
             display: grid;
             grid-template-columns: 2.5fr 1fr 1fr 1fr;
             flex: 0 0 96%;

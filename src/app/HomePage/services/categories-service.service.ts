@@ -18,7 +18,7 @@ export class CategoriesService {
 
   getAllCate ():Observable<any>{
     return this.http.get<any>(this.category).pipe(map(res => {
-       console.log("res",res)
+      //  console.log("res",res)
       return res;
 
     }))

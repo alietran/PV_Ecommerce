@@ -27,7 +27,7 @@ export class AddressService {
 
 
   getAddressDetail(addressId: string): Observable<any> {
-    console.log("addressId", addressId)
+    // console.log("addressId", addressId)
     return this.http.get<any>(this.enviromentService.url + '/users/me/addresses/' + addressId)
 
   }

@@ -21,7 +21,7 @@ export class ProductService {
 
      getAllProduct ():Observable<any>{
     return this.http.get<any>(this.product).pipe(map(res => {
-       console.log("req212s",res)
+      //  console.log("req212s",res)
       return res;
 
     }))

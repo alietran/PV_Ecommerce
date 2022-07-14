@@ -47,13 +47,13 @@ export class ProductDetailComponent implements OnInit {
         this.productDetail = data.data;
 
         this.productDetail.galleries.length == 0 ? this.imageUrl = this.productDetail.image : this.imageUrl = this.productDetail.galleries[0].url;
-        console.log('product: ', this.productDetail.galleries[0])
+        // console.log('product: ', this.productDetail.galleries[0])
         this.isLoading = false
       })
     })
   }
   changeImage(label: string, i: number) {
-    console.log('label: ', label)
+    // console.log('label: ', label)
     this.imageUrl = label;
     this.index = i;
   }

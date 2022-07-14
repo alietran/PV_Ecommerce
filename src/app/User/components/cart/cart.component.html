@@ -17,13 +17,13 @@
         <div class="cart__wrapper-content--main">
           <div class="cart__title">
             <h2>Cart</h2>
-            <a>Delete all</a>
+            <!-- <a>Delete all</a> -->
           </div>
           <div class="cart__wrapper-content-left">
             <div class="cart__wrapper-content--box">
-              <div class="box__option">
+              <!-- <div class="box__option">
                 <input type="checkbox" checked="">
-              </div>
+              </div> -->
               <div class="box__content">
                 <div class="box__content-name">
                   <div class="box__content-name-img center">
@@ -49,9 +49,9 @@
             <div>
                   <div class="cart__wrapper-content--product" *ngFor="let item of cartList">
 
-                    <div class="box__option">
+                    <!-- <div class="box__option">
                       <input type="checkbox" checked="">
-                    </div>
+                    </div> -->
                     <div class="box__content">
                       <div class="box__content-name">
                         <a class="box__content-name-img center">
@@ -132,7 +132,7 @@
                 </table>
                 <div class="VAT">(VAT included)</div>
               </div>
-              <button [routerLink]="['/order']" routerLinkActive="router-link-active"  class="continue" >CONTINUE</button>
+              <button [routerLink]="['/checkout']" routerLinkActive="router-link-active"  class="continue" >CONTINUE</button>
             </div>
           </div>
         </div>

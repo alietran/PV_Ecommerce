@@ -35,7 +35,7 @@ export class AddressComponent implements OnInit {
 
   createAddress() {
     this.addressService.createAddress(this.addressForm.value).subscribe((data: any) => {
-      console.log('data address', data)
+      // console.log('data address', data)
       this.addressForm.reset()
 
       this.dialogRef.close()
@@ -45,14 +45,14 @@ export class AddressComponent implements OnInit {
   }
   updateAddress() {
     this.addressService.updateAddress(this.data.id, this.addressForm.value).subscribe((data) => {
-      console.log("data", data)
+      // console.log("data", data)
       this.getUserAddress()
       this.dialogRef.close()
     })
   }
   getUserAddress() {
     this.addressService.getAddressDetail(this.data.id).subscribe((item) => {
-      console.log("item", item)
+      // console.log("item", item)
       this.addressForm = new FormGroup({
         fullName: new FormControl(item.data.fullName),
         city: new FormControl(item.data.city),
