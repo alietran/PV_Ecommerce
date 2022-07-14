@@ -30,6 +30,10 @@
         }
 
         .swiper-slide--item {
+          a{
+            text-decoration: none;
+          }
+
           background: white;
           // border-radius: 0.5rem;
           .swiper-slide--product-cart {

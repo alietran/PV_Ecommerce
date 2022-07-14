@@ -44,11 +44,10 @@ export class PaymentMethodService {
     });
     this.orderInfo.items = cartList2;
     console.log("cartList2", cartList2)
-    this.addressService.getAddresses().subscribe((data: any) => {
-      this.orderInfo.address  = data.data[0]
-    })
+
     console.log("orderInffo", this.orderInfo)
-    console.log("this.orderInfo.address", this.orderInfo['address'])
+    console.log("this.orderInfo.address", this.orderInfo.address)
+    console.log('payload: ',this.orderInfo)
     let api = this.enviromentService.url + "/orders"
     return this.http.post(api, this.orderInfo)
   }

@@ -11,3 +11,22 @@
     top: 10px;
     position: relative;
       }
+.stripe{
+  h2{
+    text-align: center;
+    color: blue;
+  }
+  .owner__name{
+    input{
+      padding: 0.5rem;
+      // width: 100%;
+      // border-radius: 5px;
+      // border: 1px solid #e6e6e6;
+      margin: 10px 0;
+    }
+    // &:focus{
+    //    border: 1px solid hsla(210, 96%, 45%, 50%);
+    //    box-shadow: 5px 10px #888888;
+    // }
+  }
+}

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -11,6 +12,8 @@ import {
 } from '@stripe/stripe-js';
 import { EnviromentService } from 'src/app/enviroment.service';
 import { PaymentMethodService } from '../../services/payment-method.service';
+import { Router } from '@angular/router';
+import { AddressService } from '../../services/address.service';
 
 @Component({
   selector: 'app-stripe',
@@ -24,7 +27,8 @@ export class StripeComponent implements OnInit {
   @ViewChild(StripePaymentElementComponent)
   paymentElement: StripePaymentElementComponent;
   isLoading: boolean = true;
-
+  receiptUrl: any
+  ownerName:  string
   elementsOptions: StripeElementsOptions = {
     locale: 'en'
   };
@@ -38,7 +42,10 @@ export class StripeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private stripeService: StripeService,
     private enviromentService: EnviromentService,
-    private paymentMethodService: PaymentMethodService
+    private paymentMethodService: PaymentMethodService,
+    private toastr: ToastrService,
+    private addressService : AddressService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -53,7 +60,7 @@ export class StripeComponent implements OnInit {
       confirmParams: {
         payment_method_data: {
           billing_details: {
-            name: 'sfg'
+            name: this.ownerName
           }
         },
         return_url: ''
@@ -62,10 +69,16 @@ export class StripeComponent implements OnInit {
     }).subscribe((data: any) => { //get paymentMethodID here
       console.log("pay: ", data);
       this.paymentMethodService.orderInfo.paymentMethodId = data.setupIntent.payment_method;
-      this.paymentMethodService.order().subscribe((data: any)=>{
+      console.log('pm: ', data.setupIntent.payment_method)
+      this.paymentMethodService.order().subscribe((data: any) => {
         console.log("data", data)
+        this.receiptUrl = data.data.paymentDetails.charges.data[0].receipt_url
+
+        window.open(`${this.receiptUrl}`, "_blank");
+
       })
       this.dialogRef.close()
+      // this.addressService.getAddresses()
       // this.getItemCart()
 
       // this.paymentMethodService.order().subscribe((data: any) => {

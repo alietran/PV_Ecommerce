@@ -70,7 +70,7 @@
                     SKU: {{productDetail.sku}}
                   </div>
                 </div>
-         
+
                 <div class="content__price">
                   <div class="content__price--title">{{productDetail.price | currency: "AUD" : "$AUD "}}
                   </div>
@@ -104,7 +104,7 @@
                   </div>
                 </div>
                 <div class="content__button">
-                  <button class="content__button--buy" >
+                  <button class="content__button--buy"   (click)="buyNow()">
                     BUY NOW
                   </button>
                   <button class="content__button--add" (click)="addToCart()">

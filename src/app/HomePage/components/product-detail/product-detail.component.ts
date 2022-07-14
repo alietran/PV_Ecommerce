@@ -1,6 +1,6 @@
 import { Product } from './../../Model/Product.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { HttpBackend } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
   quantity: number = 1;
   isLoading: boolean = true;
   colorProduct: string[]
-  constructor(private route: ActivatedRoute, private productService: ProductService, private toastr: ToastrService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     // this.id = this.route.snapshot.params['id'];
@@ -80,5 +80,9 @@ export class ProductDetailComponent implements OnInit {
     this.cartList = [...this.cartList]
     this.toastr.success('Add product successfully', 'Success')
     localStorage.setItem('cartList', JSON.stringify(this.cartList));
+  }
+  buyNow(){
+    this.addToCart()
+    this.router.navigate(['order'])
   }
 }

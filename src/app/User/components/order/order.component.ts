@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AddressComponent } from '../address/address.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StripeComponent } from '../stripe/stripe.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order',
@@ -21,27 +22,35 @@ export class OrderComponent implements OnInit {
   userId: string = ''
   allAddress = []
   addressNew = []
-  addressDefault :any
+  addressDefault: any
   paymentMethod: any
   success: boolean = false
   minimum: boolean = false;
   failure: boolean = false
   addressIsChoose = 0
-
+  cardIsChoose: number
+  cardList = []
+  receiptUrl: any
   constructor(private addressService: AddressService,
     private router: Router,
     private dialog: MatDialog,
     // private checkout: CheckoutService,
     private userService: UserService,
     private orderService: OrderService,
-    private paymentMethodService: PaymentMethodService) { }
+    private paymentMethodService: PaymentMethodService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.cartList = JSON.parse(localStorage.getItem("cartList"));
 
     this.getAllAddress()
-
+    this.getPaymentCard()
+    this.addressService.getAddresses().subscribe((data: any) => {
+      this.paymentMethodService.orderInfo.address = data.data[0]
+    })
+    // this.paymentMethod = this.paymentMethodService.orderInfo.paymentMethodId
   }
+
   getTotalPrice(): number {
     this.cartList = JSON.parse(localStorage.getItem("cartList"));
     let totalPrice = 0;
@@ -96,25 +105,99 @@ export class OrderComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("result", result)
+      this.getAllAddress()
+    })
+
+  }
+  checkout() {
+    this.paymentMethodService.order().subscribe((data: any) => {
+      console.log("pay nè", data)
+      this.receiptUrl = data.data.paymentDetails.charges.data[0].receipt_url
+      this.toastr.success('Checkout successfully', 'Success')
+      window.open(`${this.receiptUrl}`, "_blank");
+      // this.router.navigate([''])
+      setTimeout(() => {
+        localStorage.removeItem('cartList');
+
+        this.router.navigate([''])
+      }, 2000);
     })
   }
-  openCheckout(){
-   let dialogRef = this.dialog.open(StripeComponent, {
+
+  openCheckout() {
+    let dialogRef = this.dialog.open(StripeComponent, {
       height: '440px',
       width: '500px',
 
     });
 
-    dialogRef.afterClosed().subscribe(result=>{
-      console.log("result",result)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result)
+      setTimeout(() => {
+        localStorage.removeItem('cartList');
+        this.toastr.success('Checkout successfully', 'Success')
+        this.router.navigate([''])
+      }, 2000);
+
     })
   }
-  openMedthod(){
+
+  editInfo(id: string) {
+    console.log("id", id)
+    let dialogRef = this.dialog.open(AddressComponent, {
+      data: {
+        id: id
+      },
+      height: '740px',
+      width: '500px',
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
 
   }
 
-  changeAddressChosed(value: number){
+
+  openMedthod() {
+    let dialogRef = this.dialog.open(StripeComponent, {
+      height: '440px',
+      width: '500px',
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result)
+      setTimeout(() => {
+        localStorage.removeItem('cartList');
+        this.toastr.success('Checkout successfully', 'Success')
+
+        this.router.navigate([''])
+      }, 2000);
+      this.getAllAddress()
+    })
+  }
+  deleteAddress(id: string) {
+    this.addressService.deleteAddress(id).subscribe(res => {
+      this.getAllAddress();
+
+    })
+  }
+  changeAddressChosed(idAddress: string, value: number) {
     this.addressIsChoose = value
+    this.addressService.getAddressDetail(idAddress).subscribe((item) => {
+
+      this.paymentMethodService.orderInfo.address = item.data
+      console.log("orderInfo", this.paymentMethodService.orderInfo)
+    })
+  }
+  changeCardChosed(idCard: string, value: number) {
+    this.cardIsChoose = value
+    // this.addressService.getAddressDetail(idCard).subscribe((item)=>{
+
+    this.paymentMethodService.orderInfo.paymentMethodId = idCard
+    //   console.log("orderInfo", this.paymentMethodService.orderInfo)
+    // })
   }
 
   // changeAddress(idAddress: string){
@@ -122,28 +205,28 @@ export class OrderComponent implements OnInit {
 
   // }
 
-  // changeAddress(idAddress: string,data: any) {
-  //   console.log("idAddress", idAddress)
-  //   console.log("all add", this.allAddress)
-  //   let setDefault = this.allAddress.filter((item)=>{
-  //     // console.log("item", item['_id'] === idAddress == true)
-  //     return item['_id'] === idAddress
-  //   })
-  //   if(setDefault){
-  //     setDefault[0].isDefault = true;
+  changeAddress(idAddress: string, data: any) {
+    console.log("idAddress", idAddress)
+    console.log("all add", this.allAddress)
+    let setDefault = this.allAddress.filter((item) => {
+      // console.log("item", item['_id'] === idAddress == true)
+      return item['_id'] === idAddress
+    })
+    if (setDefault) {
+      setDefault[0].isDefault = true;
 
-  //   }
-  //   console.log(" setDefault[0]", setDefault[0])
-  //   //   let setDefault['isDefault'] =true
-  //   this.addressService.updateAddress(idAddress, setDefault[0]).subscribe((data : any)=> {
-  //     console.log("data default", data)
-  //   })
-  //   // setDefault['isDefault'] === true
-  //   // console.log("setDefault", setDefault)
-  //   // this.addressService.updateAddress(idAddress, this.editUserForm.value).subscribe(data => {
-  //   // })
+    }
+    console.log(" setDefault[0]", setDefault[0])
+    //   let setDefault['isDefault'] =true
+    this.addressService.updateAddress(idAddress, setDefault[0]).subscribe((data: any) => {
+      console.log("data default", data)
+    })
+    // setDefault['isDefault'] === true
+    // console.log("setDefault", setDefault)
+    // this.addressService.updateAddress(idAddress, this.editUserForm.value).subscribe(data => {
+    // })
 
-  // }
+  }
 
   getAddressHere() {
     // this.isLoading = true
@@ -178,6 +261,13 @@ export class OrderComponent implements OnInit {
     //   // this.userId = data.data._id
 
     // })
+  }
+
+  getPaymentCard() {
+    this.paymentMethodService.getPayment().subscribe((item) => {
+      console.log("item", item)
+      this.cardList = item.data
+    })
   }
 
 

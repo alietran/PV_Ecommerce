@@ -27,12 +27,8 @@ export class AddressService {
 
 
   getAddressDetail(addressId: string): Observable<any> {
-    // var api = this.enviromentService.url + '/users/me/addresses/:addressId';
-    return this.http.get<any>(this.enviromentService.url + '/users/me/addresses/' + addressId).pipe(map(res => {
-      console.log("user info", res)
-    }
-    ))
-
+    console.log("addressId", addressId)
+    return this.http.get<any>(this.enviromentService.url + '/users/me/addresses/' + addressId)
 
   }
   getAddressUser(){
@@ -46,9 +42,14 @@ export class AddressService {
   //   return this.http.put<any>(this.api+"/"+id,data)
   // }
 
-  updateAddress(addressId: string, data: {}): Observable<any>{
-    let api = this.enviromentService.url + '/users/me/addresses/'+addressId
-    return this.http.put(api,data )
+  updateAddress(addressId: string, data: any): Observable<any>{
+    let api = this.enviromentService.url + '/users/me/addresses/'+ addressId
+    return this.http.put<any>(api,data)
+  }
+
+  deleteAddress(addressId: string): Observable<any> {
+    let api = this.enviromentService.url + '/users/me/addresses/' + addressId
+    return this.http.delete<any>(api)
   }
 }
 

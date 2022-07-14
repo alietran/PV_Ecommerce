@@ -9,13 +9,27 @@
                 <h4 style="font-weight: 500;">Delivery information</h4>
                 <div class="address">
                   <!-- (click)="changeAddress(item._id) -->
-                  <div class="address__detail " *ngFor="let item of allAddress; index as i" (click)="changeAddressChosed(i)" >
-                    <p class="address__detail-name">{{item.fullName}}</p>
+                  <div class="address__detail " *ngFor="let item of allAddress; index as i"
+                    (click)="changeAddressChosed(item._id,i)">
+                    <div class="address__option">
+                      <p class="address__detail-name">{{item.fullName}}</p>
+                      <div (click)="editInfo(item._id)">
+                        <img src="../../../../assets/img/edit.svg" alt="">
+
+                      </div>
+                      <div>
+                        <i class="fa-solid fa-trash-can" (click)="deleteAddress(item._id)" style="color: #3498DB; padding: 0 10px"></i>
+                      </div>
+                      <!-- <img src="../../../../assets/img/icons8-trash.svg" alt="" (click)="deleteAddress(item._id)"> -->
+
+
+                    </div>
+
                     <p>{{item.address + ", " + item.ward + ", " + item.district + ", " + item.city}}</p>
                     <p>{{item.phone}}</p>
                     <div [style.display]="addressIsChoose === i ? '' :'none'">
-                        <div class="border__checked"></div>
-                        <span class="checked">✓</span>
+                      <div class="border__checked"></div>
+                      <span class="checked">✓</span>
                     </div>
 
                   </div>
@@ -42,25 +56,47 @@
           </div>
           <div class="cart__wrapper-content-left">
             <div class="cart__wrapper-content--box">
-              <div class="box__content">
+              <div class="box__content" style="width: 100%">
 
                 <div class="delivery__info">
                   <h4 style="font-weight: 500;">Payment Method</h4>
                   <div class="form-check payment">
+                    <!-- {{ cardIsChoose }} -->
+                    <div class="address__detail" *ngFor="let item of cardList; index as i"
+                      (click)="changeCardChosed(item.id,i)">
+                      <img src="../../../../assets/img/credit/visa.png" alt="">
+                      <!-- <img src="../../../../assets/img/bg_card.jpg" alt=""> -->
+                      <p class="card__id">**** **** **** 4242</p>
+                      <div class="card__item-info">
+                        <div class="card__holder">
+                          <span class="card__label">Card holder</span>
+                          <p class="card__info">{{item.billing_details.name}}</p>
+                        </div>
+                        <div class="card__holder" style="margin-left:20px" >
+                          <span class="card__label">Expires</span>
+                          <p class="card__info">{{item.card.exp_month + " / " +item.card.exp_year}}</p>
+                        </div>
+                      </div>
 
-                      <div class="address__detail">
-                        <p style="font-weight: 600;">Payment via Stripe</p>
-                        <p>Payment via Internet Banking, Visa, Master, JCB, VNPAY-QR</p>
+                      <!-- <div>
+                        <p>EXPIRES</p>
+                        <p>{{item.card.exp_month}} / {{item.card.exp_year}}</p>
+
+                      </div> -->
+                      <div [style.display]="cardIsChoose === i ? '' : 'none'">
                         <div class="border__checked"></div>
                         <span class="checked">✓</span>
                       </div>
-                      <div class="address__detail" (click)="openMedthod()">
-                        <div class="address__detail-add">
-                          <i class="fa-solid fa-plus"></i>
-                          <p>Add Method</p>
-                        </div>
+                      <!-- <div class="border__checked"></div>
+                      <span class="checked">✓</span> -->
+                    </div>
+                    <div class="address__detail-new" (click)="openMedthod()">
+                      <div class="address__detail-add">
+                        <i class="fa-solid fa-plus"></i>
+                        <p>Add Card</p>
                       </div>
-                      <!-- <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    </div>
+                    <!-- <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
                       Payment via Stripe -->
                     <!-- </label> -->
                   </div>
@@ -106,7 +142,9 @@
                 </table>
                 <div class="VAT">(VAT included)</div>
               </div>
-              <button (click)="openCheckout()" class="continue">CHECKOUT</button>
+              <!-- (click)="openCheckout()" -->
+              <button (click)="checkout()" class="continue"
+                [disabled]="this.paymentMethod === '' || undefined">CHECKOUT</button>
             </div>
           </div>
         </div>

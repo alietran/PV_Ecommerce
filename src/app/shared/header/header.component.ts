@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
 
   ngOnInit(): void {
-    console.log('token', this.isHasItemCart)
+    // console.log('token', this.isHasItemCart)
     this.getUserInfo();
     this.getItemCart();
 
@@ -44,8 +44,8 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     this.cartList = JSON.parse(localStorage.getItem("cartList"));
     if (this.cartList) { this.isHasItemCart = true }
-    console.log("this.isHasItemCart", this.isHasItemCart)
-    console.log("this.isHasItemCart", this.cartList)
+    // console.log("this.isHasItemCart", this.isHasItemCart)
+    // console.log("this.isHasItemCart", this.cartList)
 
   }
   logout() {
