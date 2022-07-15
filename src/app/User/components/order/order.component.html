@@ -1,163 +1,41 @@
-<section class="cart">
+<section class="order">
   <div class="container">
-    <div class="cart__wrapper">
-      <div class="cart__wrapper-content">
-        <div class="cart__wrapper-content--main">
-          <div class="cart__wrapper-content-left">
-            <div class="cart__wrapper-content--box">
-              <div class="box__content">
-                <h4 style="font-weight: 500;">Delivery information</h4>
-                <div *ngIf="isLoading" class="loading">
-                  <app-loadding></app-loadding>
-                </div>
-                <div class="address" *ngIf="!isLoading">
-                  <!-- (click)="changeAddress(item._id) -->
-                  <div class="address__detail " *ngFor="let item of allAddress; index as i"
-                    (click)="changeAddressChosed(item._id,i)">
-                    <div class="address__option">
-                      <p class="address__detail-name">{{item.fullName}}</p>
-                      <div (click)="editInfo(item._id)">
-                        <img src="../../../../assets/img/edit.svg" alt="">
-
-                      </div>
-                      <div>
-                        <i class="fa-solid fa-trash-can" (click)="deleteAddress(item._id)"
-                          style="color: #3498DB; padding: 0 10px"></i>
-                      </div>
-                      <!-- <img src="../../../../assets/img/icons8-trash.svg" alt="" (click)="deleteAddress(item._id)"> -->
-
-
-                    </div>
-
-                    <p>{{item.address + ", " + item.ward + ", " + item.district + ", " + item.city}}</p>
-                    <p>{{item.phone}}</p>
-                    <div [style.display]="addressIsChoose === i ? '' :'none'">
-                      <div class="border__checked"></div>
-                      <span class="checked">✓</span>
-                    </div>
-
-                  </div>
-                  <div class="address__detail" (click)="openDialog()">
-                    <div class="address__detail-add">
-                      <i class="fa-solid fa-plus"></i>
-                      <p>Add address</p>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="delivery__info">
-                  <h4 style="font-weight: 500;padding: 10px 0 0 0">Delivery Method</h4>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-                      Standard delivery
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cart__wrapper-content-left">
-            <div class="cart__wrapper-content--box">
-              <div class="box__content" style="width: 100%">
-
-                <div class="delivery__info">
-                  <h4 style="font-weight: 500;">Payment Method</h4>
-                  <div *ngIf="isLoading" class="loadingCard">
-                    <app-loadding></app-loadding>
-                  </div>
-                  <div class="form-check payment" *ngIf="!isLoading">
-                    <!-- {{ cardIsChoose }} -->
-
-                    <div class="address__detail" *ngFor="let item of cardList; index as i"
-                      (click)="changeCardChosed(item.id,i)">
-                      <img src="../../../../assets/img/credit/visa.png" alt="">
-                      <!-- <img src="../../../../assets/img/bg_card.jpg" alt=""> -->
-                      <p class="card__id">**** **** **** 4242</p>
-                      <div class="card__item-info">
-                        <div class="card__holder">
-                          <span class="card__label">Card holder</span>
-                          <p class="card__info">{{item.billing_details.name}}</p>
-                        </div>
-                        <div class="card__holder" style="margin-left:20px">
-                          <span class="card__label">Expires</span>
-                          <p class="card__info">{{item.card.exp_month + " / " +item.card.exp_year}}</p>
-                        </div>
-                      </div>
-
-                      <!-- <div>
-                        <p>EXPIRES</p>
-                        <p>{{item.card.exp_month}} / {{item.card.exp_year}}</p>
-
-                      </div> -->
-                      <div [style.display]="cardIsChoose === i ? '' : 'none'">
-                        <div class="border__checked"></div>
-                        <span class="checked">✓</span>
-                      </div>
-                      <!-- <div class="border__checked"></div>
-                      <span class="checked">✓</span> -->
-                    </div>
-                    <div class="address__detail-new" (click)="openMedthod()">
-                      <div class="address__detail-add">
-                        <i class="fa-solid fa-plus"></i>
-                        <p>Add Card</p>
-                      </div>
-                    </div>
-                    <!-- <input type="radio" class="form-check-input" name="" id="" value="checkedValue" checked>
-                      Payment via Stripe -->
-                    <!-- </label> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cart__wrapper-content--right">
-          <div class="cart__wrapper-content--info">
-            <h4>Order Info</h4>
-            <div class="info-voucher" *ngFor="let item of cartList">
-              <div class="info-text"><img [src]="item.image" alt="" style="width: 80px;height: 80px;"></div>
-              <div class="info-product">
-                <p>{{item.name}}</p>
-                <p>Quantity: {{item.quantity}}</p>
-                <p style="font-weight: 500">{{item.price | currency: "AUD" : "$AUD "}}</p>
-              </div>
-
-            </div>
-
-          </div>
-          <div class="cart__wrapper-content--payment">
-            <div class="cart__wrapper-content--info">
-              <h4>Payment</h4>
-              <div class="info-payment">
-                <table class="payment-tab">
-                  <tbody>
-                    <tr>
-                      <td>Provisional </td>
-                      <td><span>{{getTotalPrice() | currency: "AUD" : "$AUD "}}</span></td>
-                    </tr>
-                    <tr>
-                      <td>Transport fee </td>
-                      <td><span>FREE</span></td>
-                    </tr>
-                    <tr>
-                      <td>Total </td>
-                      <td><span style="color:red;font-size:18px;font-weight: 500;">{{getTotalPrice() | currency: "AUD" :
-                          "$AUD "}}</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="VAT">(VAT included)</div>
-              </div>
-              <!-- (click)="openCheckout()" -->
-              <button (click)="checkout()" class="continue"
-               >CHECKOUT</button>
-            </div>
-          </div>
-        </div>
+    <div class="cart__wrapper-breadcrumbs">
+      <div class="breadcrumbs-icon">
+        <a class="breadcrumbs-icon--link" href="/">
+          <img src="../../../../assets/img/home-icon.svg" alt="">
+        </a>
+        <span class="css-rhmj3t">&gt;</span>
       </div>
-
+      <div class="breadcrumbs-name">
+        <a href="/">Order</a>
+      </div>
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Order ID</th>
+          <th scope="col">Total</th>
+          <th scope="col">Status</th>
+          <th scope="col">Order Date</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderList; index as i">
+          <th scope="row">{{i}}</th>
+          <td>{{item._id}}</td>
+          <td>{{item.totalPrice | currency: "AUD"}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.createdAt | date:'medium'}}</td>
+          <td  >
+            <a  (click)="getOrderDetail(item._id)">Detail</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
+
 </section>

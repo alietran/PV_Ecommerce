@@ -51,4 +51,8 @@ export class PaymentMethodService {
     let api = this.enviromentService.url + "/orders"
     return this.http.post(api, this.orderInfo)
   }
+  deleteCard(paymentMethodId: string): Observable<any> {
+    let api = this.enviromentService.url + '/users/me/payment-methods/' + paymentMethodId
+    return this.http.delete<any>(api)
+  }
 }

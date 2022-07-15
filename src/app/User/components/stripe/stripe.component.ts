@@ -75,7 +75,12 @@ export class StripeComponent implements OnInit {
         this.receiptUrl = data.data.paymentDetails.charges.data[0].receipt_url
 
         window.open(`${this.receiptUrl}`, "_blank");
+         setTimeout(() => {
+        localStorage.removeItem('cartList')
+        this.toastr.success('Checkout successfully', 'Success')
 
+        this.router.navigate([''])
+      }, 3000)
       })
       this.dialogRef.close()
 

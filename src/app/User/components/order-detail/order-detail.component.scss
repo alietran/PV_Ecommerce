@@ -1,15 +1,4 @@
-table {
-  width: 100%;
-  margin: 20px 0;
 
-  background-color: white;
-  td a{
-    cursor: pointer;
-    &:hover{
-      color: rgb(20, 53, 195);
-    }
-  }
-}
 .cart__wrapper {
     &-breadcrumbs {
       white-space: nowrap;

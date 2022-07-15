@@ -18,4 +18,10 @@ export class OrderService {
     let api = this.enviromentService.url + '/orders?page=1&limit=10&sort[createdAt]=desc'
     return this.http.get<any>(api)
   }
+
+  getOrderDetail(id: string) {
+    let api = this.enviromentService.url + '/orders/' + id
+    return this.http.get<any>(api)
+  }
+
 }

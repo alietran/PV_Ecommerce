@@ -60,7 +60,7 @@
                         <p class="box__content-name-product">{{item.name}}</p>
                       </div>
                       <div class="box__content-unitPrice center">
-                        <p style="font-weight: 600;"> {{item.price | currency: "AUD" : "$AUD "}}</p>
+                        <p style="font-weight: 600;"> {{item.price | currency: "AUD"}}</p>
                       </div>
                       <div class="box__content-quantity center quanty">
                         <!-- <div style="opacity: 0">123</div> -->
@@ -88,8 +88,7 @@
                       </div>
 
                       <div class="box__content-quantity center">
-                        <p style="font-weight: 600;color: #1435c3"> {{(item.price * item.quantity) | currency: "AUD" :
-                          "$AUD"}}</p>
+                        <p style="font-weight: 600;color: #1435c3"> {{(item.price * item.quantity) | currency: "AUD" }}</p>
                       </div>
                     </div>
                   </div>
@@ -117,7 +116,7 @@
                   <tbody>
                     <tr>
                       <td>Provisional </td>
-                      <td><span>{{getTotalPrice() | currency: "AUD" : "$AUD "}}</span></td>
+                      <td><span>{{getTotalPrice() | currency: "AUD" }}</span></td>
                     </tr>
                     <tr>
                       <td>Transport fee </td>
@@ -125,8 +124,7 @@
                     </tr>
                     <tr>
                       <td>Total </td>
-                      <td><span style="color:red;font-size:18px;font-weight: 500;"> {{getTotalPrice()| currency: "AUD" :
-                          " $AUD "}}</span></td>
+                      <td><span style="color:red;font-size:18px;font-weight: 500;"> {{getTotalPrice()| currency: "AUD"}}</span></td>
                     </tr>
                   </tbody>
                 </table>
